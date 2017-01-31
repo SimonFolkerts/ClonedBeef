@@ -1,0 +1,158 @@
+/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */progress,sub,sup{vertical-align:baseline}button,hr,input{overflow:visible}[type=checkbox],[type=radio],legend{box-sizing:border-box;padding:0}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}button,input,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{color:inherit;display:table;max-width:100%;white-space:normal}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+
+/***********HEADER**********/
+
+#header {
+    display: flex;
+    align-items: center;
+    height: 10%;
+    background-color: #FFFFFF;
+}
+
+#page-heading {
+    color: #B68F40;
+}
+
+
+/*######## MAIN PAGE ######*/
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #262626;
+    height: 90%;
+}
+
+
+/***********SCROLLER********/
+
+#scroller {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto;
+    height: 90%;
+    border-left: 1px solid #A4AAA9;
+    text-align: center;
+}
+
+.page-marker {
+    font-family: sans-serif;
+    font-size: 50px;
+    color: #A4AAA9;
+}
+
+#page-marker-1 {
+    color: #B68F40;
+    font-size: 65px;
+    border-left: 6px solid #B68F40;
+}
+
+/***********SECTIONS********/
+
+.dotted-line {
+    position: absolute;
+    height: 100%;
+    left: 50%;
+    border-right: 4px dashed #B68F40;
+}
+
+.dotted-line-top {
+    top: -100%;
+    z-index: 0;
+}
+
+.dotted-line-bottom {
+    bottom: -100%;
+    z-index: 0;
+}
+
+.section-container {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+    z-index: 1;
+    background-color: #262626;
+}
+
+.step-heading {
+    position: absolute;
+    top: -15%;
+    left: -10%;
+    color: #B68F40;
+    font-size: 40px;
+}
+
+.step-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 75%;
+    background-color: #000000;
+    /*border: 1px solid #369bf1;*/
+    z-index: 1;
+}
+
+.step__left { 
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    width: 50%;
+    max-height: 700px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    overflow: hidden;
+}
+
+.step__left p {
+    color: #A4AAA9;
+    font-family: 'Arsenal', sans-serif;
+}
+
+.step__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px;
+    width: 50%;
+    min-width: 560px;
+    height: 100%;
+}
+
+.right__canvas {
+    background-color: white;
+    width: 480px;
+}
+
+.game-area {
+    width: 480px;
+    height: 320px;
+}
+
+.right__codebox {
+    margin-top: 20px;
+    width: 480px;
+    height: 100px;
+    background-color: #6E7271;
+}
+
+/***********FLOATERS********/
