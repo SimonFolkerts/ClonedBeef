@@ -63,7 +63,6 @@ $(document).ready(function() {
         $("#scroller").append('<p id="page-marker-' + index + '" class="page-marker inactive">--</p>')
     });
 
-
     updateMarkers();
 
     $(window).scroll(updateMarkers);
