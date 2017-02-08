@@ -49,8 +49,11 @@ $(document).ready(function() {
         //Add event listeners to inactive page markers to scroll to element on click
         $(".inactive").click(function() {
             var id = $(this).attr('id').match(/\d+/g);
+            var stepHeading = $("#step-heading-" + id);
+            var stepTop = $(stepHeading).offset().top;
+//            var offset = 20;
             $('html, body').stop().animate({
-                scrollTop: $("#section-" + id).position().top
+                scrollTop: stepTop - ($(window).height() / 9)
             }, 600);
         });
     }

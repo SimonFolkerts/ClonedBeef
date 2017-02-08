@@ -34,30 +34,8 @@ and open the template in the editor.
                     </div>
                     <div class="step-container">
                         <div class="step__left">
-                            <h2 class="step-heading">Step One: Blah Blah Blah</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                Donec et mauris vitae nibh sollicitudin malesuada sed 
-                                eget lectus. Pellentesque vel elit lectus. Vestibulum 
-                                ante ipsum primis in faucibus orci luctus et ultrices 
-                                posuere cubilia Curae; Sed aliquet rutrum erat sed 
-                                maximus. Proin vel blandit ligula, vel pellentesque 
-                                nunc. Integer cursus eros in tristique ullamcorper. 
-                                Phasellus et eleifend sem. Etiam quis cursus orci. 
-                                Vivamus metus sem, interdum in venenatis vel, pretium 
-                                sed felis. Integer in posuere leo, vel euismod nunc. 
-                                Morbi pharetra nunc ac augue fermentum, vel pulvinar 
-                                lectus mollis.<br><br> Class aptent taciti sociosqu ad litora 
-                                torquent per conubia nostra, per inceptos himenaeos. 
-                                Aliquam at dolor lectus. Interdum et malesuada fames ac 
-                                ante ipsum primis in faucibus. Morbi ornare quam magna, 
-                                non eleifend lorem placerat vitae. Donec lobortis felis 
-                                et consectetur porttitor. Integer laoreet orci metus, 
-                                sed vestibulum purus placerat hendrerit. Pellentesque 
-                                tortor nibh, suscipit eu volutpat at, tristique non 
-                                ligula. Etiam vestibulum eros ut tincidunt luctus. Nam 
-                                pretium, metus eu commodo consequat, neque sem vehicula 
-                                dolor, id lobortis odio ipsum nec ipsum. Phasellus eget 
-                                arcu nec est tempor rhoncus.</p>
+                            <h2 id="step-heading-0" class="step-heading">Step One: Create the Game Area</h2>
+                            <p>The first step to creating a javascript game using canvas is to create the game area itself.</p>
                         </div>
                         <div class="step__right">
                             <div class="right__canvas">
@@ -79,7 +57,7 @@ and open the template in the editor.
                     </div>
                     <div class="step-container">
                         <div class="step__left">
-                            <h2 class="step-heading">Step Two: Blah Blah Blah</h2>
+                            <h2 id="step-heading-1" class="step-heading">Step Two: Blah Blah Blah</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                                 Donec et mauris vitae nibh sollicitudin malesuada sed 
                                 eget lectus. Pellentesque vel elit lectus. Vestibulum 
@@ -108,6 +86,10 @@ and open the template in the editor.
                             <div class="right__canvas">
                                 <canvas id="canvas-step-1" class="game-area"></canvas>
                             </div>
+                            <div id="editor">function foo(items) {
+                                var x = "All this is syntax highlighted";
+                                return x;
+                                }</div>
                             <div class="right__codebox"></div>
                         </div>
                     </div>
@@ -124,7 +106,7 @@ and open the template in the editor.
                     </div>
                     <div class="step-container">
                         <div class="step__left">
-                            <h2 class="step-heading">Step Three: Blah Blah Blah</h2>
+                            <h2 id="step-heading-2" class="step-heading">Step Three: Blah Blah Blah</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                                 Donec et mauris vitae nibh sollicitudin malesuada sed 
                                 eget lectus. Pellentesque vel elit lectus. Vestibulum 
@@ -169,7 +151,7 @@ and open the template in the editor.
                     </div>
                     <div class="step-container">
                         <div class="step__left">
-                            <h2 class="step-heading">Step Four: Blah Blah Blah</h2>
+                            <h2 id="step-heading-3" class="step-heading">Step Four: Blah Blah Blah</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                                 Donec et mauris vitae nibh sollicitudin malesuada sed 
                                 eget lectus. Pellentesque vel elit lectus. Vestibulum 
@@ -214,7 +196,7 @@ and open the template in the editor.
                     </div>
                     <div class="step-container">
                         <div class="step__left">
-                            <h2 class="step-heading">Step One: Blah Blah Blah</h2>
+                            <h2 id="step-heading-4" class="step-heading">Step One: Blah Blah Blah</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                                 Donec et mauris vitae nibh sollicitudin malesuada sed 
                                 eget lectus. Pellentesque vel elit lectus. Vestibulum 
@@ -259,7 +241,7 @@ and open the template in the editor.
                     </div>
                     <div class="step-container">
                         <div class="step__left">
-                            <h2 class="step-heading">Step One: Blah Blah Blah</h2>
+                            <h2 id="step-heading-5" class="step-heading">Step One: Blah Blah Blah</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                                 Donec et mauris vitae nibh sollicitudin malesuada sed 
                                 eget lectus. Pellentesque vel elit lectus. Vestibulum 
@@ -304,7 +286,7 @@ and open the template in the editor.
                     </div>
                     <div class="step-container">
                         <div class="step__left">
-                            <h2 class="step-heading">Step One: Blah Blah Blah</h2>
+                            <h2 id="step-heading-6" class="step-heading">Step One: Blah Blah Blah</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                                 Donec et mauris vitae nibh sollicitudin malesuada sed 
                                 eget lectus. Pellentesque vel elit lectus. Vestibulum 
@@ -340,5 +322,11 @@ and open the template in the editor.
             </div>
         </div>
         <script src="../js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/ace/1.2.6/min/ace.js"></script>
+        <script>
+            var editor = ace.edit("editor");
+            editor.setTheme("ace/theme/monokai");
+            editor.getSession().setMode("ace/mode/javascript");
+        </script>
     </body>
 </html>

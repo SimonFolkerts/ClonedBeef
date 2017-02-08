@@ -20,7 +20,7 @@ body, html {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     height: 6vh;
     background-color: #FFFFFF;
 }
@@ -37,9 +37,11 @@ body, html {
 /*######## MAIN PAGE ######*/
 
 #main-container {
+
+    overflow-x: hidden;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    max-width: 100vw;
     background-color: #262626;
 }
 
@@ -99,9 +101,8 @@ body, html {
 
 #content-container {
     position: relative;
-    left: 10%;
-    width: 90%;
-    margin-top: 10vh;
+    padding-left: 10vw;
+    width: 100vw;
 }
 
 
@@ -115,18 +116,22 @@ body, html {
 }
 
 .section-container {
-    /*overflow-y: hidden;*/
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 95vh;
+    width: 100%;
+    width: auto;
     z-index: 1;
     background-color: #262626;
-    margin-bottom: 50vh;
+    padding: 50vh 0 50vh 0;
+}
+
+.first {
+    margin-top: 0vh;
 }
 
 .last {
-    margin-bottom: 2vh;
+    margin-bottom: 0vh;
 }
 
 .step-heading {
@@ -206,4 +211,25 @@ body, html {
     font-size: 60px;
     position: fixed;
     color: #333333;
+}
+
+
+/*########## MEDIA QUERIES ##########*/
+
+@media (max-width: 1024px) {
+    .step-container {
+        flex-direction: column;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 1366px) {
+    .step-container {
+        width: 100%;
+        background-color: transparent;
+    }
+
+    .step__left {
+        width: 90%;
+    }
 }
