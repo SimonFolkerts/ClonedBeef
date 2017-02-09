@@ -12,11 +12,13 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/ace/1.2.6/min/ace.js"></script>
     </head>
     <body>
         <header id="header">
             <img id="uparrow" src="../img/uparrow.png" alt="back to top">
             <h1 id="page-heading">Page Heading</h1>
+            <div class="spacer"></div>
         </header>
         <div id="main-container">
             <div id="scroller">
@@ -25,62 +27,50 @@ and open the template in the editor.
                 <div class="dotted-line"></div>
                 <section id="section-0" class="section-container">
                     <div class="parallax">
-                        <p class="background-floater">1</p>
+                        <p class="background-floater">function startGame()</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">2</p>
+                        <p class="background-floater">this.context = this.canvas.getContext("2d);");</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">3</p>
+                        <p class="background-floater">myGameArea.start();</p>
                     </div>
                     <h2 id="step-heading-0" class="step-heading">Step One: Create the Game Area</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>The first step to creating a javascript game using canvas is to create the game area itself.</p>
+                            <p>The first step to creating a javascript game using canvas is to create the game area itself and to make it ready for drawing.
+                                A simple rectangle will suffice. In the code an object that represents the game area is created which references this canvas.<br><br>
+                                The startGame function is what will set the process in motion. It calls a method of myGameArea called start, which at this point
+                            gets the context of the canvas that will allow us to draw on it.</p>
                         </div>
                         <div class="step__right">
                             <div class="right__canvas">
                                 <canvas id="canvas-step-0" class="game-area"></canvas>
                             </div>
-                            <div class="right__codebox"></div>
+                            <div id="editor-0" class="editor"></div>
                         </div>
                     </div>
                 </section>
                 <section id="section-1" class="section-container">
                     <div class="parallax">
-                        <p class="background-floater">1</p>
+                        <p class="background-floater">canvas.width = 480;</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">2</p>
+                        <p class="background-floater">ctx = myGameArea.context;</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">3</p>
+                        <p class="background-floater">ctx.fillstyle = color;</p>
                     </div>
                     <h2 id="step-heading-1" class="step-heading">Step Two: Blah Blah Blah</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                Donec et mauris vitae nibh sollicitudin malesuada sed 
-                                eget lectus. Pellentesque vel elit lectus. Vestibulum 
-                                ante ipsum primis in faucibus orci luctus et ultrices 
-                                posuere cubilia Curae; Sed aliquet rutrum erat sed 
-                                maximus. Proin vel blandit ligula, vel pellentesque 
-                                nunc. Integer cursus eros in tristique ullamcorper. 
-                                Phasellus et eleifend sem. Etiam quis cursus orci. 
-                                Vivamus metus sem, interdum in venenatis vel, pretium 
-                                sed felis. Integer in posuere leo, vel euismod nunc. 
-                                Morbi pharetra nunc ac augue fermentum, vel pulvinar 
-                                lectus mollis.</p>
+                            <p>The next step is to add a component to the game area that will become the player character. For now, a simple square will do.</p>
                         </div>
                         <div class="step__right">
                             <div class="right__canvas">
                                 <canvas id="canvas-step-1" class="game-area"></canvas>
                             </div>
-                            <div id="editor">function foo(items) {
-                                var x = "All this is syntax highlighted";
-                                return x;
-                                }</div>
-                            <div class="right__codebox"></div>
+                            <div id="editor-1" class="editor"></div>
                         </div>
                     </div>
                 </section>
@@ -469,11 +459,6 @@ and open the template in the editor.
             </div>
         </div>
         <script src="../js/main.js"></script>
-        <script src="https://cdn.jsdelivr.net/ace/1.2.6/min/ace.js"></script>
-        <script>
-            var editor = ace.edit("editor");
-            editor.setTheme("ace/theme/monokai");
-            editor.getSession().setMode("ace/mode/javascript");
-        </script>
+        <script src="../js/game.js"></script>
     </body>
 </html>
