@@ -190,6 +190,9 @@ body, html {
     width: 480px;
     height: 320px;
 }
+.count {
+    color: white;
+}
 
 .editor { 
     margin-top: 20px;
