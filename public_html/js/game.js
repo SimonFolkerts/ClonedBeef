@@ -1,4 +1,4 @@
-//$(document).ready(function() {
+$(document).ready(function() {
 
 //Editor contents
 var contents = [];
@@ -7,46 +7,18 @@ var contents = [];
 contents[0] = ['function startGame() {\r\n    myGameArea.start();\r\n} \n \nvar myGameArea = {\r\n    canvas : document.getElementById("gameArea"),\r\n    start : function() {\r\n        this.canvas.width = 480;\r\n        this.canvas.height = 320; \r\n        this.context = this.canvas.getContext(\"2d);\");\r\n    }\r\n};', 'javascript'];
 
 //########## Step Two ##########//
-contents[1] = ['function startGame() {\r\n    myGameArea.start();\r\n} \n \n var myGameArea = {\r\n    canvas : $(\"#game-area\"),\r\n    start : function() {\r\n        this.context = this.canvas.getContext(\"2d);\");\r\n    }\r\n};', 'javascript'];
+contents[1] = ['function startGame() {\r\n    myGameArea.start();\r\n    myGamePiece = new component(30, 30, \"black\", 10, 120);\r\n}\n\nfunction component(width, height, color, x, y) {\r\n    this.width = width;\r\n    this.height = height;\r\n    this.x = x;\r\n    this.y = y;\r\n    ctx = myGameArea.context;\r\n    ctx.fillstyle = color;\r\n    ctx.fillRect(this.x, this.y, this.width, this.height);\r\n}', 'javascript'];
 
-function stepTwo() {
-    var step = 2;
-
-    function startGame() {
-        myGameArea.start();
-        myGamePiece = new component(30, 30, "black", 10, 120);
-    }
-
-    var myGameArea = {
-        start: function() {
-            this.canvas = document.getElementById('canvas-step-' + (step - 1));
-            this.canvas.width = 480;
-            this.canvas.height = 320;
-            this.context = this.canvas.getContext("2d");
-        }
-    };
-
-    function component(width, height, color, x, y) {
-        this.width = width;
-        this.height = height;
-        this.x = x;
-        this.y = y;
-        ctx = myGameArea.context;
-        ctx.fillstyle = color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-    }
-    startGame();
-}
-
-stepTwo();
-
+$.getScript('../steps/step2', function(){
+    step2();
+});
 //########## INIT EDITORS ##########//
 
 //Get all editors on the page
 var editors = $(".editor");
 
 //Initialise all editors on the page with theme, mode and contents
-$(editors).each(function() {
+$(editors).each(function () {
     //Get individual editor
     var editorId = $(this).attr('id');
     var editor = ace.edit(editorId);
@@ -68,4 +40,4 @@ $(editors).each(function() {
         console.log('No contents specified for editor #' + editorNumber);
     }
 });
-//});
+});
