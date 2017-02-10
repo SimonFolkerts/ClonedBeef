@@ -184,6 +184,7 @@ body, html {
 .right__canvas {
     background-color: white;
     width: 480px;
+    position: relative;
 }
 
 .game-area {

@@ -41,7 +41,7 @@ and open the template in the editor.
                             <p>The first step to creating a javascript game using canvas is to create the game area itself and to make it ready for drawing.
                                 A simple rectangle will suffice. In the code an object that represents the game area is created which references this canvas.<br><br>
                                 The startGame() function is what will set the process in motion. It calls a method of myGameArea() called start, which at this point
-                            gets the context of the canvas that will allow us to draw on it.</p>
+                                gets the context of the canvas that will allow us to draw on it.</p>
                         </div>
                         <div class="step__right">
                             <div class="right__canvas">
@@ -67,7 +67,7 @@ and open the template in the editor.
                             <p>The next step is to add a component to the game area that will become the player character. For now, a simple square will do.
                                 <br><br>A new function, 'component', has been added. It is a constructor that specifies the dimensions, position and color of a square to 
                                 be drawn on the canvas. A new line in the startGame() function calls this function and passes it the parameters needed, thereby creating a new 
-                            component named myGamePiece() on the canvas.</p>
+                                component named myGamePiece() on the canvas.</p>
                         </div>
                         <div class="step__right">
                             <div class="right__canvas">
@@ -92,12 +92,12 @@ and open the template in the editor.
                         <div class="step__left">
                             <p>To allow the game area to display activity, the display will need to be regularly updated. To do this, an interval
                                 must be specified that governs how many times a second the display is updated.<br><br>myGameArea() has had a new property
-                            added to its start method called interval that specifies what function to execute at what frequency. The function to be called is a new function
-                            called updateGameArea() that calls two new methods: myGameArea.clear() and myGamePiece.update().<br><br>clear() has
-                            been added to myGameArea() and when called, clears the display. update() has been added to the component constructor so when myGamePiece is 
-                            created via this constructor it will have update() as a method. The logic that determines the position and appearance of myGamePiece
-                            is now contained in this method and is updated when the method is called.<br><br>Now every frame the game area clears and the game piece 
-                            redraws itself based on its current properties.</p>
+                                added to its start method called interval that specifies what function to execute at what frequency. The function to be called is a new function
+                                called updateGameArea() that calls two new methods: myGameArea.clear() and myGamePiece.update().<br><br>clear() has
+                                been added to myGameArea() and when called, clears the display. update() has been added to the component constructor so when myGamePiece is 
+                                created via this constructor it will have update() as a method. The logic that determines the position and appearance of myGamePiece
+                                is now contained in this method and is updated when the method is called.<br><br>Now every frame the game area clears and the game piece 
+                                redraws itself based on its current properties.</p>
                         </div>
                         <div class="step__right">
                             <p id='count-2' class='count'></p>
@@ -125,7 +125,7 @@ and open the template in the editor.
                                 that has a set interval.<br><br>A function updateGameArea() exists that governs what is to happen each interval.<br><br>A component constructor function
                                 component() exists that can create a component with dimension and position data and a method that can update this data.<br><br>And finally there is
                                 a function startGame() that starts the game and creates a component called myGamePiece.<br><br>The next steps will be concerned
-                            with adding functionality to this setup.</p>
+                                with adding functionality to this setup.</p>
                         </div>
                         <div class="step__right">
                             <div class="right__canvas">
@@ -145,49 +145,22 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">3</p>
                     </div>
-                    <h2 id="step-heading-4" class="step-heading">Step One: Blah Blah Blah</h2>
+                    <h2 id="step-heading-4" class="step-heading">Step 5: Movement</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                Donec et mauris vitae nibh sollicitudin malesuada sed 
-                                eget lectus. Pellentesque vel elit lectus. Vestibulum 
-                                ante ipsum primis in faucibus orci luctus et ultrices 
-                                posuere cubilia Curae; Sed aliquet rutrum erat sed 
-                                maximus. Proin vel blandit ligula, vel pellentesque 
-                                nunc. Integer cursus eros in tristique ullamcorper. 
-                                Phasellus et eleifend sem. Etiam quis cursus orci. 
-                                Vivamus metus sem, interdum in venenatis vel, pretium 
-                                sed felis. Integer in posuere leo, vel euismod nunc. 
-                                Morbi pharetra nunc ac augue fermentum, vel pulvinar 
-                                lectus mollis.<br><br> Class aptent taciti sociosqu ad litora 
-                                torquent per conubia nostra, per inceptos himenaeos. 
-                                Aliquam at dolor lectus. Interdum et malesuada fames ac 
-                                ante ipsum primis in faucibus. Morbi ornare quam magna, 
-                                non eleifend lorem placerat vitae. Donec lobortis felis 
-                                et consectetur porttitor. Integer laoreet orci metus, 
-                                sed vestibulum purus placerat hendrerit. Pellentesque 
-                                tortor nibh, suscipit eu volutpat at, tristique non 
-                                ligula. Etiam vestibulum eros ut tincidunt luctus. Nam 
-                                pretium, metus eu commodo consequat, neque sem vehicula 
-                                dolor, id lobortis odio ipsum nec ipsum. Phasellus eget 
-                                arcu nec est tempor rhoncus.<br><br> Class aptent taciti sociosqu ad litora 
-                                torquent per conubia nostra, per inceptos himenaeos. 
-                                Aliquam at dolor lectus. Interdum et malesuada fames ac 
-                                ante ipsum primis in faucibus. Morbi ornare quam magna, 
-                                non eleifend lorem placerat vitae. Donec lobortis felis 
-                                et consectetur porttitor. Integer laoreet orci metus, 
-                                sed vestibulum purus placerat hendrerit. Pellentesque 
-                                tortor nibh, suscipit eu volutpat at, tristique non 
-                                ligula. Etiam vestibulum eros ut tincidunt luctus. Nam 
-                                pretium, metus eu commodo consequat, neque sem vehicula 
-                                dolor, id lobortis odio ipsum nec ipsum. Phasellus eget 
-                                arcu nec est tempor rhoncus.</p>
+                            <p>Now that the game area is set up, it is time to begin adding functionality to the game itself. The first logical step is to enable
+                                the user to move the game piece by inputting controls.<br><br>For this game the game piece should follow the mouse cursor or, if
+                                on a touch screen, the users finger press. This can be achieved by modifying the piece's current position
+                                by a certain amount on based on the position of the cursor each frame. The simplest way to implement this is by taking the cursor position
+                                each frame and setting the piece's position to match that. For that to happen the game piece needs a method that changes the piece's position
+                                data each frame.<br><br>newPos has been added to the code</p>
                         </div>
                         <div class="step__right">
+                            <p id='count-4' class='count'></p>
                             <div class="right__canvas">
                                 <canvas id="canvas-step-4" class="game-area"></canvas>
                             </div>
-                            <div class="right__codebox"></div>
+                            <div id="editor-4" class="editor"></div>
                         </div>
                     </div>
                 </section>
@@ -431,5 +404,7 @@ and open the template in the editor.
         </div>
         <script src="../js/main.js"></script>
         <script src="../js/game.js"></script>
+
+        <script src ='../js/steps/step_5.js'></script>
     </body>
 </html>

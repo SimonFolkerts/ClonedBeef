@@ -9,19 +9,26 @@ $(document).ready(function () {
 //########## Step Two ##########//
     contents[1] = ['function startGame() {\r\n    myGameArea.start();\r\n    myGamePiece = new component(30, 30, \"black\", 10, 120);\r\n}\n\nfunction component(width, height, color, x, y) {\r\n    this.width = width;\r\n    this.height = height;\r\n    this.x = x;\r\n    this.y = y;\r\n    ctx = myGameArea.context;\r\n    ctx.fillstyle = color;\r\n    ctx.fillRect(this.x, this.y, this.width, this.height);\r\n}', 'javascript'];
 
-    $.getScript('../js/steps/step_2.js', function () {
-        step2();
-    });
+//    $.getScript('../js/steps/step_2.js', function () {
+//        step2();
+//    });
 
 //########## Step Three ##########//
     contents[2] = ['var myGameArea = {\r\n    start : function() {\r\n        //existing code \n        this.interval = setInterval(updateGameArea, 20);\r\n    },\r\n    clear : function() {\r\n        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);\r\n    }\r\n};\n\nfunction component(width, height, color, x, y) {\n    //existing code\n    this.update = function(){\r\n        ctx = myGameArea.context;\r\n        ctx.fillStyle = color;\r\n        ctx.fillRect(this.x, this.y, this.width, this.height);\r\n    };\n}\n\nfunction updateGameArea() {\r\n    myGameArea.clear();\r\n    myGamePiece.update();\r\n}', 'javascript'];
 
-    $.getScript('../js/steps/step_3.js', function () {
-        step3();
-    });
+//    $.getScript('../js/steps/step_3.js', function () {
+//        step3();
+//    });
 
-
+//########## Step Four ##########//
     contents[3] = ['function startGame() {\r\n    myGameArea.start();\r\n    myGamePiece = new component(30, 30, \"black\", 10, 120);\r\n}\r\n\r\nvar myGameArea = {\r\n    start: function () {\r\n        this.canvas = document.getElementById(\'canvas-step-\' + (step - 1));\r\n        this.canvas.width = 480;\r\n        this.canvas.height = 320;\r\n        this.context = this.canvas.getContext(\"2d\");\r\n        this.interval = setInterval(updateGameArea, 20);\r\n    },\r\n    clear: function () {\r\n        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);\r\n    }\r\n};\r\n\r\nfunction component(width, height, color, x, y) {\r\n    this.width = width;\r\n    this.height = height;\r\n    this.x = x;\r\n    this.y = y;\r\n    this.update = function () {\r\n        ctx = myGameArea.context;\r\n        ctx.fillstyle = color;\r\n        ctx.fillRect(this.x, this.y, this.width, this.height);\r\n    };\r\n}\r\n\r\nfunction updateGameArea() {\r\n    myGameArea.clear();\r\n    myGamePiece.update();\r\n}\r\n\r\nstartGame();', 'javascript']
+    
+//########## Step Five ##########//
+    contents[4] = ['function component(width, height, color, x, y) {\n    //existing code\n    this.newPos = function() {\r\n        this.x += targetX;\r\n        this.y += targetY; \r\n        };\n}', 'javascript'];
+    
+//    $.getScript('../js/steps/step_5.js', function () {
+//        step5();
+//    });
 //########## INIT EDITORS ##########//
 
 //Get all editors on the page
