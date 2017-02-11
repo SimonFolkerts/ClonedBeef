@@ -182,15 +182,19 @@ body, html {
 }
 
 .right__canvas {
-    background-color: white;
-    width: 480px;
-    position: relative;
+    border: none;
+    width: 490px;
+    height: 330px;
 }
 
 .game-area {
+    
+    background-color: white;
+    position: relative;
     width: 480px;
     height: 320px;
 }
+
 .count {
     color: white;
 }

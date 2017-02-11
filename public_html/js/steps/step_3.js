@@ -1,4 +1,4 @@
-function step3() {
+(function () {
     var step = 3;
 
     function startGame() {
@@ -34,7 +34,7 @@ function step3() {
     function updateGameArea() {
         myGameArea.clear();
         myGamePiece.update();
-        
+
         //counter logic
         if (count <= 50) {
             count++;
@@ -43,7 +43,7 @@ function step3() {
         }
         $('#count-2').html(count);
     }
-    
+
     var count = 0;
     startGame();
-};
+})();
