@@ -25,7 +25,7 @@ and open the template in the editor.
             </div>
             <div id="content-container">
                 <div class="dotted-line"></div>
-                <section id="section-0" class="section-container">
+                <section id="section-1" class="section-container">
                     <div class="parallax">
                         <p class="background-floater">function startGame()</p>
                     </div>
@@ -35,7 +35,7 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">myGameArea.start();</p>
                     </div>
-                    <h2 id="step-heading-0" class="step-heading">Step One: Create the Game Area</h2>
+                    <h2 id="step-heading-1" class="step-heading">Step 1: Create the Game Area</h2>
                     <div class="step-container">
                         <div class="step__left">
                             <p>The first step to creating a javascript game using canvas is to create the game area itself and to make it ready for drawing.
@@ -45,11 +45,11 @@ and open the template in the editor.
                         </div>
                         <div class="step__right">
                             <iframe class='right__canvas' src="step-1.html"></iframe>
-                            <div id="editor-0" class="editor"></div>
+                            <div id="editor-1" class="editor"></div>
                         </div>
                     </div>
                 </section>
-                <section id="section-1" class="section-container">
+                <section id="section-2" class="section-container">
                     <div class="parallax">
                         <p class="background-floater">canvas.width = 480;</p>
                     </div>
@@ -59,7 +59,7 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">ctx.fillstyle = color;</p>
                     </div>
-                    <h2 id="step-heading-1" class="step-heading">Step Two: Add Component</h2>
+                    <h2 id="step-heading-2" class="step-heading">Step 2: Add Component</h2>
                     <div class="step-container">
                         <div class="step__left">
                             <p>The next step is to add a component to the game area that will become the player character. For now, a simple square will do.
@@ -68,36 +68,7 @@ and open the template in the editor.
                                 component named myGamePiece() on the canvas.</p>
                         </div>
                         <div class="step__right">
-                            <!--<iframe class='right__canvas' src="step-2.html"></iframe>-->
-                            <div id="editor-1" class="editor"></div>
-                        </div>
-                    </div>
-                </section>
-                <section id="section-2" class="section-container">
-                    <div class="parallax">
-                        <p class="background-floater">1</p>
-                    </div>
-                    <div class="parallax">
-                        <p class="background-floater">2</p>
-                    </div>
-                    <div class="parallax">
-                        <p class="background-floater">3</p>
-                    </div>
-                    <h2 id="step-heading-2" class="step-heading">Step Three: Specify Frames</h2>
-                    <div class="step-container">
-                        <div class="step__left">
-                            <p>To allow the game area to display activity, the display will need to be regularly updated. To do this, an interval
-                                must be specified that governs how many times a second the display is updated.<br><br>myGameArea() has had a new property
-                                added to its start method called interval that specifies what function to execute at what frequency. The function to be called is a new function
-                                called updateGameArea() that calls two new methods: myGameArea.clear() and myGamePiece.update().<br><br>clear() has
-                                been added to myGameArea() and when called, clears the display. update() has been added to the component constructor so when myGamePiece is 
-                                created via this constructor it will have update() as a method. The logic that determines the position and appearance of myGamePiece
-                                is now contained in this method and is updated when the method is called.<br><br>Now every frame the game area clears and the game piece 
-                                redraws itself based on its current properties.</p>
-                        </div>
-                        <div class="step__right">
-                            <p id='count-2' class='count'></p>
-                            <iframe class='right__canvas' src="step-3.html"></iframe>
+                            <iframe class='right__canvas' src="step-2.html"></iframe>
                             <div id="editor-2" class="editor"></div>
                         </div>
                     </div>
@@ -112,19 +83,20 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">3</p>
                     </div>
-                    <h2 id="step-heading-3" class="step-heading">Step Four: The Stage is Set</h2>
+                    <h2 id="step-heading-3" class="step-heading">Step 3: Specify Frames</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Now the fundamentals of a game environment have been established. A game area myGameArea() exists that can be drawn on and cleared
-                                that has a set interval.<br><br>A function updateGameArea() exists that governs what is to happen each interval.<br><br>A component constructor function
-                                component() exists that can create a component with dimension and position data and a method that can update this data.<br><br>And finally there is
-                                a function startGame() that starts the game and creates a component called myGamePiece.<br><br>The next steps will be concerned
-                                with adding functionality to this setup.</p>
+                            <p>To allow the game area to display activity, the display will need to be regularly updated. To do this, an interval
+                                must be specified that governs how many times a second the display is updated.<br><br>myGameArea() has had a new property
+                                added to its start method called interval that specifies what function to execute at what frequency. The function to be called is a new function
+                                called updateGameArea() that calls two new methods: myGameArea.clear() and myGamePiece.update().<br><br>clear() has
+                                been added to myGameArea() and when called, clears the display. update() has been added to the component constructor so when myGamePiece is 
+                                created via this constructor it will have update() as a method. The logic that determines the position and appearance of myGamePiece
+                                is now contained in this method and is updated when the method is called.<br><br>Now every frame the game area clears and the game piece 
+                                redraws itself based on its current properties.</p>
                         </div>
                         <div class="step__right">
-                            <!--<div class="right__canvas">-->
-                            <!--<canvas id="canvas-step-3" class="game-area"></canvas>-->
-                            <!--</div>-->
+                            <iframe class='right__canvas' src="step-3.html"></iframe>
                             <div id="editor-3" class="editor"></div>
                         </div>
                     </div>
@@ -139,19 +111,19 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">3</p>
                     </div>
-                    <h2 id="step-heading-4" class="step-heading">Step 5: Movement</h2>
+                    <h2 id="step-heading-4" class="step-heading">Step 4: The Board is Set</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Now that the game area is set up, it is time to begin adding functionality to the game itself. The first logical step is to enable
-                                the user to move the game piece by inputting controls.<br><br>For this game the game piece should follow the mouse cursor or, if
-                                on a touch screen, the users finger press. This can be achieved by modifying the piece's current position
-                                by a certain amount on based on the position of the cursor each frame. The simplest way to implement this is by taking the cursor position
-                                each frame and setting the piece's position to match that. For that to happen the game piece needs a method that changes the piece's position
-                                data each frame.<br><br>newPos has been added to the code</p>
+                            <p>Now the fundamentals of a game environment have been established. A game area myGameArea() exists that can be drawn on and cleared
+                                that has a set interval.<br><br>A function updateGameArea() exists that governs what is to happen each interval.<br><br>A component constructor function
+                                component() exists that can create a component with dimension and position data and a method that can update this data.<br><br>And finally there is
+                                a function startGame() that starts the game and creates a component called myGamePiece.<br><br>The next steps will be concerned
+                                with adding functionality to this setup.</p>
                         </div>
                         <div class="step__right">
-                            <p id='count-4' class='count'></p>
-                            <iframe class='right__canvas' src="step-5.html"></iframe>
+                            <!--<div class="right__canvas">-->
+                            <!--<canvas id="canvas-step-3" class="game-area"></canvas>-->
+                            <!--</div>-->
                             <div id="editor-4" class="editor"></div>
                         </div>
                     </div>
@@ -166,38 +138,22 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">3</p>
                     </div>
-                    <h2 id="step-heading-5" class="step-heading">Step One: Blah Blah Blah</h2>
+                    <h2 id="step-heading-5" class="step-heading">Step 5: Movement</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                Donec et mauris vitae nibh sollicitudin malesuada sed 
-                                eget lectus. Pellentesque vel elit lectus. Vestibulum 
-                                ante ipsum primis in faucibus orci luctus et ultrices 
-                                posuere cubilia Curae; Sed aliquet rutrum erat sed 
-                                maximus. Proin vel blandit ligula, vel pellentesque 
-                                nunc. Integer cursus eros in tristique ullamcorper. 
-                                Phasellus et eleifend sem. Etiam quis cursus orci. 
-                                Vivamus metus sem, interdum in venenatis vel, pretium 
-                                sed felis. Integer in posuere leo, vel euismod nunc. 
-                                Morbi pharetra nunc ac augue fermentum, vel pulvinar 
-                                lectus mollis.<br><br> Class aptent taciti sociosqu ad litora 
-                                torquent per conubia nostra, per inceptos himenaeos. 
-                                Aliquam at dolor lectus. Interdum et malesuada fames ac 
-                                ante ipsum primis in faucibus. Morbi ornare quam magna, 
-                                non eleifend lorem placerat vitae. Donec lobortis felis 
-                                et consectetur porttitor. Integer laoreet orci metus, 
-                                sed vestibulum purus placerat hendrerit. Pellentesque 
-                                tortor nibh, suscipit eu volutpat at, tristique non 
-                                ligula. Etiam vestibulum eros ut tincidunt luctus. Nam 
-                                pretium, metus eu commodo consequat, neque sem vehicula 
-                                dolor, id lobortis odio ipsum nec ipsum. Phasellus eget 
-                                arcu nec est tempor rhoncus.</p>
+                            <p>Now that the game area is set up, it is time to begin adding functionality to the game itself. The first logical step is to enable
+                                the user to move the game piece by inputting controls.<br><br>For this game the game piece should follow the mouse cursor or, if
+                                on a touch screen, the users finger press. This can be achieved by modifying the piece's current position
+                                by a certain amount on based on the position of the cursor each frame. The simplest way to implement this is by taking the cursor position
+                                each frame and setting the piece's position to match that. For that to happen the game piece needs a method that changes the piece's position
+                                data each frame.<br><br>newPos() has been added to the component class. It takes an x and a y coordinate and updates the 
+                                components position values. The coordinates are retrieved using an event listener. New code has been added to the start method 
+                                of the game area. On start, an event listener that fires on mouse move retrieves the coordinates and stores them in the properties
+                                of the game area.</p>
                         </div>
                         <div class="step__right">
-                            <div class="right__canvas">
-                                <canvas id="canvas-step-5" class="game-area"></canvas>
-                            </div>
-                            <div class="right__codebox"></div>
+                            <iframe class='right__canvas' src="step-5.html"></iframe>
+                            <div id="editor-5" class="editor"></div>
                         </div>
                     </div>
                 </section>
@@ -211,38 +167,24 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">3</p>
                     </div>
-                    <h2 id="step-heading-6" class="step-heading">Step One: Blah Blah Blah</h2>
+                    <h2 id="step-heading-6" class="step-heading">Step 6: Modifying Movement</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                Donec et mauris vitae nibh sollicitudin malesuada sed 
-                                eget lectus. Pellentesque vel elit lectus. Vestibulum 
-                                ante ipsum primis in faucibus orci luctus et ultrices 
-                                posuere cubilia Curae; Sed aliquet rutrum erat sed 
-                                maximus. Proin vel blandit ligula, vel pellentesque 
-                                nunc. Integer cursus eros in tristique ullamcorper. 
-                                Phasellus et eleifend sem. Etiam quis cursus orci. 
-                                Vivamus metus sem, interdum in venenatis vel, pretium 
-                                sed felis. Integer in posuere leo, vel euismod nunc. 
-                                Morbi pharetra nunc ac augue fermentum, vel pulvinar 
-                                lectus mollis.<br><br> Class aptent taciti sociosqu ad litora 
-                                torquent per conubia nostra, per inceptos himenaeos. 
-                                Aliquam at dolor lectus. Interdum et malesuada fames ac 
-                                ante ipsum primis in faucibus. Morbi ornare quam magna, 
-                                non eleifend lorem placerat vitae. Donec lobortis felis 
-                                et consectetur porttitor. Integer laoreet orci metus, 
-                                sed vestibulum purus placerat hendrerit. Pellentesque 
-                                tortor nibh, suscipit eu volutpat at, tristique non 
-                                ligula. Etiam vestibulum eros ut tincidunt luctus. Nam 
-                                pretium, metus eu commodo consequat, neque sem vehicula 
-                                dolor, id lobortis odio ipsum nec ipsum. Phasellus eget 
-                                arcu nec est tempor rhoncus.</p>
+                            <p>Whilst in the previous example the game piece is essentially teleported to the cursor each frame, in this example the 
+                                game piece moves more fluidly and has been constrained to one axis. To achieve this, several new lines of code have been
+                                added, including a new function called clamp(). This function clamp() takes three numbers. The second and third numbers passed are used to clamp
+                                the first number passed, that is to say that the first number cannot go below the second, nor above the third. This function constrains a number to an upper and
+                                lower limit.
+                                <br><br>In order to get the game piece moving smoothly and with easing, the newPos() method was modified.
+                                The fundamental principle behind the movement is: y += (targetY - y) / speed; This statement increments the y value of the game piece
+                                by the difference between the target and the piece's current position, which is then adjusted by the speed parameter. The further away the 
+                                piece is from the cursor, the larger the increment and therefore the faster the piece appears to move. The clamp() function is applied to the difference to cap the top speed of the 
+                                game piece so that it moves more controllably. This allows acceleration and top speed to be modified separately. The speed and acceleration are passed to the 
+                                component when it is called by startGame().</p>
                         </div>
                         <div class="step__right">
-                            <div class="right__canvas">
-                                <canvas id="canvas-step-6" class="game-area"></canvas>
-                            </div>
-                            <div class="right__codebox"></div>
+                            <iframe class='right__canvas' src="step-6.html"></iframe>
+                            <div id="editor-6" class="editor"></div>
                         </div>
                     </div>
                 </section>
@@ -256,38 +198,18 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">3</p>
                     </div>
-                    <h2 id="step-heading-7" class="step-heading">Step One: Blah Blah Blah</h2>
+                    <h2 id="step-heading-7" class="step-heading">Step 7: Enemy</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                Donec et mauris vitae nibh sollicitudin malesuada sed 
-                                eget lectus. Pellentesque vel elit lectus. Vestibulum 
-                                ante ipsum primis in faucibus orci luctus et ultrices 
-                                posuere cubilia Curae; Sed aliquet rutrum erat sed 
-                                maximus. Proin vel blandit ligula, vel pellentesque 
-                                nunc. Integer cursus eros in tristique ullamcorper. 
-                                Phasellus et eleifend sem. Etiam quis cursus orci. 
-                                Vivamus metus sem, interdum in venenatis vel, pretium 
-                                sed felis. Integer in posuere leo, vel euismod nunc. 
-                                Morbi pharetra nunc ac augue fermentum, vel pulvinar 
-                                lectus mollis.<br><br> Class aptent taciti sociosqu ad litora 
-                                torquent per conubia nostra, per inceptos himenaeos. 
-                                Aliquam at dolor lectus. Interdum et malesuada fames ac 
-                                ante ipsum primis in faucibus. Morbi ornare quam magna, 
-                                non eleifend lorem placerat vitae. Donec lobortis felis 
-                                et consectetur porttitor. Integer laoreet orci metus, 
-                                sed vestibulum purus placerat hendrerit. Pellentesque 
-                                tortor nibh, suscipit eu volutpat at, tristique non 
-                                ligula. Etiam vestibulum eros ut tincidunt luctus. Nam 
-                                pretium, metus eu commodo consequat, neque sem vehicula 
-                                dolor, id lobortis odio ipsum nec ipsum. Phasellus eget 
-                                arcu nec est tempor rhoncus.</p>
+                            <p>Split the component class into player char and enemy basic
+                                added random enemy spawn chance
+                                added enemy move left and destruct when hit left
+                                <br><br>
+                            </p>
                         </div>
                         <div class="step__right">
-                            <div class="right__canvas">
-                                <canvas id="canvas-step-7" class="game-area"></canvas>
-                            </div>
-                            <div class="right__codebox"></div>
+                            <iframe class='right__canvas' src="step-7.html"></iframe>
+                            <div id="editor-7" class="editor"></div>
                         </div>
                     </div>
                 </section>
@@ -301,49 +223,17 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">3</p>
                     </div>
-                    <h2 id="step-heading-8" class="step-heading">Step One: Blah Blah Blah</h2>
+                    <h2 id="step-heading-8" class="step-heading">Step 8: Enemies</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                Donec et mauris vitae nibh sollicitudin malesuada sed 
-                                eget lectus. Pellentesque vel elit lectus. Vestibulum 
-                                ante ipsum primis in faucibus orci luctus et ultrices 
-                                posuere cubilia Curae; Sed aliquet rutrum erat sed 
-                                maximus. Proin vel blandit ligula, vel pellentesque 
-                                nunc. Integer cursus eros in tristique ullamcorper. 
-                                Phasellus et eleifend sem. Etiam quis cursus orci. 
-                                Vivamus metus sem, interdum in venenatis vel, pretium 
-                                sed felis. Integer in posuere leo, vel euismod nunc. 
-                                Morbi pharetra nunc ac augue fermentum, vel pulvinar 
-                                lectus mollis.<br><br> Class aptent taciti sociosqu ad litora 
-                                torquent per conubia nostra, per inceptos himenaeos. 
-                                Aliquam at dolor lectus. Interdum et malesuada fames ac 
-                                ante ipsum primis in faucibus. Morbi ornare quam magna, 
-                                non eleifend lorem placerat vitae. Donec lobortis felis 
-                                et consectetur porttitor. Integer laoreet orci metus, 
-                                sed vestibulum purus placerat hendrerit. Pellentesque 
-                                tortor nibh, suscipit eu volutpat at, tristique non 
-                                ligula. Etiam vestibulum eros ut tincidunt luctus. Nam 
-                                pretium, metus eu commodo consequat, neque sem vehicula 
-                                dolor, id lobortis odio ipsum nec ipsum. Phasellus eget 
-                                arcu nec est tempor rhoncus.<br><br> Class aptent taciti sociosqu ad litora 
-                                torquent per conubia nostra, per inceptos himenaeos. 
-                                Aliquam at dolor lectus. Interdum et malesuada fames ac 
-                                ante ipsum primis in faucibus. Morbi ornare quam magna, 
-                                non eleifend lorem placerat vitae. Donec lobortis felis 
-                                et consectetur porttitor. Integer laoreet orci metus, 
-                                sed vestibulum purus placerat hendrerit. Pellentesque 
-                                tortor nibh, suscipit eu volutpat at, tristique non 
-                                ligula. Etiam vestibulum eros ut tincidunt luctus. Nam 
-                                pretium, metus eu commodo consequat, neque sem vehicula 
-                                dolor, id lobortis odio ipsum nec ipsum. Phasellus eget 
-                                arcu nec est tempor rhoncus.</p>
+                            <p>New enemies get pushed to an array. Array is looped through and all enemies in array are moved and updated.
+                                Array is filtered to remove inactive enemies to prevent bloat.
+                                <br><br>
+                            </p>
                         </div>
                         <div class="step__right">
-                            <div class="right__canvas">
-                                <canvas id="canvas-step-8" class="game-area"></canvas>
-                            </div>
-                            <div class="right__codebox"></div>
+                            <iframe class='right__canvas' src="step-8.html"></iframe>
+                            <div id="editor-8" class="editor"></div>
                         </div>
                     </div>
                 </section>
@@ -357,38 +247,95 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">3</p>
                     </div>
-                    <h2 id="step-heading-9" class="step-heading">Step One: Blah Blah Blah</h2>
+                    <h2 id="step-heading-9" class="step-heading">Step 9: Collision Detection</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                Donec et mauris vitae nibh sollicitudin malesuada sed 
-                                eget lectus. Pellentesque vel elit lectus. Vestibulum 
-                                ante ipsum primis in faucibus orci luctus et ultrices 
-                                posuere cubilia Curae; Sed aliquet rutrum erat sed 
-                                maximus. Proin vel blandit ligula, vel pellentesque 
-                                nunc. Integer cursus eros in tristique ullamcorper. 
-                                Phasellus et eleifend sem. Etiam quis cursus orci. 
-                                Vivamus metus sem, interdum in venenatis vel, pretium 
-                                sed felis. Integer in posuere leo, vel euismod nunc. 
-                                Morbi pharetra nunc ac augue fermentum, vel pulvinar 
-                                lectus mollis.<br><br> Class aptent taciti sociosqu ad litora 
-                                torquent per conubia nostra, per inceptos himenaeos. 
-                                Aliquam at dolor lectus. Interdum et malesuada fames ac 
-                                ante ipsum primis in faucibus. Morbi ornare quam magna, 
-                                non eleifend lorem placerat vitae. Donec lobortis felis 
-                                et consectetur porttitor. Integer laoreet orci metus, 
-                                sed vestibulum purus placerat hendrerit. Pellentesque 
-                                tortor nibh, suscipit eu volutpat at, tristique non 
-                                ligula. Etiam vestibulum eros ut tincidunt luctus. Nam 
-                                pretium, metus eu commodo consequat, neque sem vehicula 
-                                dolor, id lobortis odio ipsum nec ipsum. Phasellus eget 
-                                arcu nec est tempor rhoncus.</p>
+                            <p>Added in start and stop functionality. When game is clicked on it plays, when it loses focus it pauses.
+                                stop() function added that pauses frames. Collision detection and handling added.
+                                <br><br>
+                            </p>
                         </div>
                         <div class="step__right">
-                            <div class="right__canvas">
-                                <canvas id="canvas-step-9" class="game-area"></canvas>
-                            </div>
-                            <div class="right__codebox"></div>
+                            <iframe class='right__canvas' src="step-9.html"></iframe>
+                            <div id="editor-9" class="editor"></div>
+                        </div>
+                    </div>
+                </section>
+                <section id="section-10" class="section-container">
+                    <div class="parallax">
+                        <p class="background-floater">1</p>
+                    </div>
+                    <div class="parallax">
+                        <p class="background-floater">2</p>
+                    </div>
+                    <div class="parallax">
+                        <p class="background-floater">3</p>
+                    </div>
+                    <h2 id="step-heading-10" class="step-heading">Step 10: The Pieces are Moving</h2>
+                    <div class="step-container">
+                        <div class="step__left">
+                            <p>Added in start and stop functionality. When game is clicked on it plays, when it loses focus it pauses.
+                                stop() function added that pauses frames. Collision detection and handling added.
+                                <br><br>
+                            </p>
+                        </div>
+                        <div class="step__right">
+                            <div id="editor-10" class="editor"></div>
+                        </div>
+                    </div>
+                </section>
+                <section id="section-11" class="section-container">
+                    <div class="parallax">
+                        <p class="background-floater">1</p>
+                    </div>
+                    <div class="parallax">
+                        <p class="background-floater">2</p>
+                    </div>
+                    <div class="parallax">
+                        <p class="background-floater">3</p>
+                    </div>
+                    <h2 id="step-heading-11" class="step-heading">Step 11: The Black Square Strikes Back</h2>
+                    <div class="step-container">
+                        <div class="step__left">
+                            <p>Black square fires missiles on click to click location. Missiles accelerate towards target location 
+                                and self destruct when they reach target location.
+                                Missiles that collide with enemies before self destruction are destroyed, along with the enemy.
+                                Moving values to the inside of object classes. No need to pass stuff that won't change.
+                                Game loop reordered.
+                                <br><br>
+                            </p>
+                        </div>
+                        <div class="step__right">
+                            <iframe class='right__canvas' src="step-11.html"></iframe>
+                            <div id="editor-11" class="editor"></div>
+                        </div>
+                    </div>
+                </section>
+                <section id="section-12" class="section-container">
+                    <div class="parallax">
+                        <p class="background-floater">1</p>
+                    </div>
+                    <div class="parallax">
+                        <p class="background-floater">2</p>
+                    </div>
+                    <div class="parallax">
+                        <p class="background-floater">3</p>
+                    </div>
+                    <h2 id="step-heading-12" class="step-heading">Step 12: Refined Mechanics</h2>
+                    <div class="step-container">
+                        <div class="step__left">
+                            <p>Missiles cannot be dumbfired. Instead, when the cursor passes over an enemey whilst a mouse button is pressed down, that enemy and any others the
+                                cursor passes over will be appended to an array. Upon release of the button, the list is rapidly looped through, and a barrage of missiles is fired, 
+                                one per target. Two mouse event listeners were added that account for presses and releases of mouse buttons.
+                                Missiles will only collide and annhilate their designated target. Missiles are passed a specific target object instead of just coords
+                                Missiles will home in on their designated target (still nondirectional). Missiles will self destruct after 1.5 seconds.
+                                Frequency of enemies increases with time.                                
+                                <br><br>
+                            </p>
+                        </div>
+                        <div class="step__right">
+                            <iframe class='right__canvas' src="step-12.html"></iframe>
+                            <div id="editor-12" class="editor"></div>
                         </div>
                     </div>
                 </section>

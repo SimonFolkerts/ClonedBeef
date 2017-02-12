@@ -8,7 +8,7 @@
 
     var myGameArea = {
         start: function () {
-            this.canvas = document.getElementById('canvas-step-' + (step - 1));
+            this.canvas = document.getElementById('canvas-step-' + step);
             this.canvas.width = 480;
             this.canvas.height = 320;
             this.context = this.canvas.getContext("2d");
@@ -18,7 +18,6 @@
             this.canvas.addEventListener("mousemove", function (event) {
                 myGameArea.mouseX = event.offsetX;
                 myGameArea.mouseY = event.offsetY;
-                console.log(event.offsetX);
             });
         },
         clear: function () {
@@ -46,17 +45,7 @@
         myGameArea.clear();
         myGamePiece.newPos(myGameArea.mouseX, myGameArea.mouseY);
         myGamePiece.update();
-
-        //counter logic
-        if (count <= 50) {
-            count++;
-        } else {
-            count = 0;
-        }
-        $('#count-4').html(count);
     }
-
-    var count = 0;
     startGame();
 })();
 

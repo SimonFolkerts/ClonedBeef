@@ -63,7 +63,7 @@ $(document).ready(function() {
         //Reassign event listeners based on which markers are active or not
         $(".inactive").on('mouseenter', function() {
             var id = $(this).attr('id').match(/\d+/g);
-            $(this).html(parseInt(id) + 1);
+            $(this).html(parseInt(id));
         });
         $(".inactive").on('mouseleave', function() {
             $(this).html(inactiveText);
@@ -77,7 +77,7 @@ $(document).ready(function() {
 
     //Remove inactive, add active class
     function makeMarkerActive(id) {
-        $('#page-marker-' + id).removeClass('inactive').addClass('active').html(parseInt(id) + 1);
+        $('#page-marker-' + id).removeClass('inactive').addClass('active').html(parseInt(id));
     }
 
     //Vice versa
@@ -126,7 +126,7 @@ $(document).ready(function() {
 
     //Add page markers that correspond to sections to the scrollbar
     $(".section-container").each(function(index) {
-        $("#scroller").append('<p id="page-marker-' + index + '" class="page-marker inactive">' + inactiveText + '</p>')
+        $("#scroller").append('<p id="page-marker-' + (index + 1) + '" class="page-marker inactive">' + inactiveText + '</p>')
     });
 
     //Add onScroll events
@@ -140,5 +140,5 @@ $(document).ready(function() {
 
     //Do scroll to 
     $(window).scrollTop(0).scrollTop(1);
-    scrollToSection($("#section-0"), false);
+    scrollToSection($("#section-1"), false);
 });

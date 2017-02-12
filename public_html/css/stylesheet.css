@@ -196,7 +196,11 @@ body, html {
 }
 
 .count {
-    color: white;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    color: black;
+    z-index: 5;
 }
 
 .editor { 

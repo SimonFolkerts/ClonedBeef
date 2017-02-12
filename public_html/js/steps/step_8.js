@@ -1,12 +1,14 @@
 (function () {
-    var step = 6;
+    var step = 8;
     function startGame() {
         myGameArea.start();
-        myGamePiece = new component(30, 30, "black", 20, 120, 15, 100);
+        myGamePiece = new playerCharacter(30, 30, "black", 20, 120, 15, 100);
+        enemyPiece = new enemyBasic(30, 30, "red", 490, (Math.random() * 280), 0, 0);
     }
 
     var myGameArea = {
         start: function () {
+            this.enemies = [];
             this.canvas = document.getElementById('canvas-step-' + (step));
             this.canvas.width = 480;
             this.canvas.height = 320;
@@ -23,21 +25,43 @@
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         }
     };
-       
-    function component (width, height, color, x, y, accel, speed) {
+
+    function playerCharacter(width, height, color, x, y, accel, speed) {
+        this.active = true;
         this.width = width;
         this.height = height;
         this.x = x;
         this.y = y;
-        this.acceleration = accel; //lower means faster. This will affect maxSpeed too.
+        this.acceleration = accel;
         this.maxSpeed = speed;
         this.update = function () {
             ctx = myGameArea.context;
-            ctx.fillstyle = color;
+            ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         };
         this.newPos = function (targetY) {
             this.y += (clamp((targetY - this.y), -this.maxSpeed, this.maxSpeed)) / this.acceleration;
+        };
+    }
+
+    function enemyBasic(width, height, color, x, y, accel, speed) {
+        this.active = true;
+        this.width = width;
+        this.height = height;
+        this.x = x;
+        this.y = y;
+        this.acceleration = accel;
+        this.maxSpeed = speed;
+        this.update = function () {
+            ctx = myGameArea.context;
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+            if (this.x <= 0) {
+                this.active = false;
+            }
+        };
+        this.newPos = function () {
+            this.x += -3;
         };
     }
 
@@ -47,6 +71,20 @@
 
     function updateGameArea() {
         myGameArea.clear();
+        
+        if ((Math.random() * 1000) > 990) {
+             myGameArea.enemies.push(new enemyBasic(30, 30, "red", 490, (Math.random() * 280), 0, 0));
+        }
+        
+        $(myGameArea.enemies).each(function() {
+            this.newPos();
+            this.update();
+        });
+        
+        myGameArea.enemies = myGameArea.enemies.filter(function(enemyBasic) {
+            return enemyBasic.active;
+        });
+        
         myGamePiece.newPos(myGameArea.mouseY);
         myGamePiece.update();
     }
