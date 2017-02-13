@@ -27,10 +27,10 @@ body, html {
 }
 
 #page-heading {
+
     color: #B68F40;
+    font-size: 30px;
 }
-
-
 /*######## MAIN PAGE ######*/
 
 #main-container {
@@ -183,15 +183,41 @@ body, html {
     height: 330px;
 }
 
+.right__canvas-modal{
+    border: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 94vh;
+    z-index: 50;
+}
+
+.right__canvas body {
+    display: flex;
+    justify-content: space-around;    
+}
+
 .game-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 100%;
+    display: flex;
+    justify-content: space-around;    
+    align-items: center;
     position: relative;
+}
+.game-area-1 {
+    background-color: white;
+    position: relative;
+    width: 480px;
+    height: 320px;
 }
 
 .game-area {
     background-color: white;
     position: relative;
-    width: 480px;
-    height: 320px;
+    max-width: 480px;
+    max-height: 320px;
 }
 
 .modal {
@@ -206,15 +232,20 @@ body, html {
     z-index: 1;
 }
 
+.modal-button {
+    width: 50px;
+    height: auto;
+}
+
 .playbutton {
     position: absolute;
 }
 
 .count {
     position: absolute;
-    top: 0;
+    top: 40%;
     left: 50%;
-    color: black;
+    color: dimgrey;
     z-index: 5;
 }
 
@@ -225,7 +256,7 @@ body, html {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /***********FLOATERS********/
@@ -298,7 +329,7 @@ body, html {
     #uparrow {
         height: 50%;
     }
-    
+
     .parallax {
         display: none;
     }
@@ -355,7 +386,7 @@ body, html {
     .step__left {
         font-size: 0.7em;
     }
-    
+
     .editor {
         font-size: 0.6em !important;
     }

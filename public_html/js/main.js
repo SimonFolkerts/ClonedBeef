@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var modal;
     /**
      * detect IE
@@ -29,32 +29,70 @@ $(document).ready(function() {
         // other browser
         return false;
     }
-    
+
     if (detectIE()) {
-            $('.parallax').addClass('hidden');
+        $('.parallax').addClass('hidden');
     }
 
     function checkWindowSize() {
         if ($(window).width() < 640) {
-            $(".right__canvas").each(function() {
-                $(this).addClass('hidden');
+            $(".right__canvas").each(function () {
+                $(this).addClass('hidden hidden-modal');
             });
-            modal = true;
-        }
-        else {
-            $(".right__canvas").each(function() {
+            $(".modal-button").each(function () {
                 $(this).removeClass('hidden');
             });
+            modal = true;
+        } else {
+            $(".right__canvas").each(function () {
+                $(this).removeClass('hidden hidden-modal');
+            });
+            $(".modal-button").each(function () {
+                $(this).addClass('hidden');
+            });
+            $('.game-area').removeClass('game-area-modal');
             modal = false;
         }
     }
 
     checkWindowSize();
-    $(window).resize(function() {
+    $(window).resize(function () {
         checkWindowSize();
     });
-    
-    
+
+    var modalId;
+
+    $('.modal-button').click(function () {
+        if (modal) {
+            modalId = $(this).attr('id').match(/\d+/g);
+            var current = $(window).scrollTop();
+            $(window).scroll(function () {
+                $(window).scrollTop(current);
+            });
+            $(this).addClass('hidden');
+            $('#iframe-' + modalId).addClass('right__canvas-modal');
+            $('#iframe-' + modalId).removeClass('right__canvas hidden');
+            $('#scroller').addClass('hidden');
+            $('#page-heading').text('Click/Tap here to minimise');
+        }
+    });
+
+    $('#header').click(function () {
+        if (modal) {
+            $(window).off('scroll');
+            $(window).scroll(function () {
+                parallaxDisplace();
+                updateMarkers();
+            });
+            $(".modal-button").each(function () {
+                $(this).removeClass('hidden');
+            });
+            $('#iframe-' + modalId).removeClass('right__canvas-modal');
+            $('#iframe-' + modalId).addClass('right__canvas hidden');
+            $('#scroller').removeClass('hidden');
+            $('#page-heading').text('Simple Javascript Game Development');
+        }
+    });
 
     //Inactive page markers string
     var inactiveText = '--';
@@ -90,7 +128,7 @@ $(document).ready(function() {
         var active = '';
         var markers = $('.section-container');
         //Select teh marker to be made active
-        markers.each(function() {
+        markers.each(function () {
             //Get current section id number
             var id = $(this).attr('id').match(/\d+/g);
             //Select active
@@ -100,7 +138,7 @@ $(document).ready(function() {
         });
         if ($('#page-marker-' + active).hasClass("inactive")) {
             //If the selected marker was previously inactive, clear all markers
-            markers.each(function() {
+            markers.each(function () {
                 var id = $(this).attr('id').match(/\d+/g);
                 makeMarkerInactive(id);
             });
@@ -117,16 +155,16 @@ $(document).ready(function() {
         $(".active").off();
 
         //Reassign event listeners based on which markers are active or not
-        $(".inactive").on('mouseenter', function() {
+        $(".inactive").on('mouseenter', function () {
             var id = $(this).attr('id').match(/\d+/g);
             $(this).html(parseInt(id));
         });
-        $(".inactive").on('mouseleave', function() {
+        $(".inactive").on('mouseleave', function () {
             $(this).html(inactiveText);
         });
 
         //(re-)add event listeners to inactive page markers to scroll to element on click
-        $(".inactive").click(function() {
+        $(".inactive").click(function () {
             scrollToSection($(this), true);
         });
     }
@@ -158,8 +196,8 @@ $(document).ready(function() {
     }
 
     //Randomise the position, size and speed of the floater and parallax elements
-    $(function() {
-        $(".background-floater").each(function() {
+    $(function () {
+        $(".background-floater").each(function () {
             var sizeAndSpeed = (Math.floor(Math.random() * 40 + 15));
             $(this).css({
                 'left': (Math.floor(Math.random() * 150 - 50)) + '%',
@@ -181,12 +219,12 @@ $(document).ready(function() {
     //########## CONTROLLER ##########//
 
     //Add page markers that correspond to sections to the scrollbar
-    $(".section-container").each(function(index) {
+    $(".section-container").each(function (index) {
         $("#scroller").append('<p id="page-marker-' + (index + 1) + '" class="page-marker inactive">' + inactiveText + '</p>')
     });
 
     //Add onScroll events
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         parallaxDisplace();
         updateMarkers();
     });

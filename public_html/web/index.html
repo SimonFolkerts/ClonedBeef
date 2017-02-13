@@ -30,16 +30,17 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">this.canvas.getContext("2d);");</p>
                     </div>
-                    <h2 id="step-heading-1" class="step-heading">Step 1: Create the Game Area</h2>
+                    <h2 id="step-heading-1" class="step-heading">1. In the Beginning...</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>The first step to creating a javascript game using canvas is to create the game area itself and to make it ready for drawing.
-                                A simple rectangle will suffice. In the code an object that represents the game area is created which references this canvas.<br><br>
-                                The startGame() function is what will set the process in motion. It calls a method of myGameArea() called start, which at this point
-                                gets the context of the canvas that will allow us to draw on it.</p>
+                            <p>For anything to be able to happen, there needs to be a space in which it can happen. We must create the world in which the events that drive the game will take place.<br><br>
+                            Both the space itself, an html5 canvas element, and a javascript object myGameArea must be created that describes this space. This object has a method start(), and that method, when executed, 
+                            takes the space and assigns it values describing it's dimensions. There must also be a function starGame() that will set the process of 
+                            initializing the game in motion.<br><br>It is within this space, now stored by myGameArea, that the game will take place.<br><br></p>
                         </div>
                         <div class="step__right">
-                            <iframe class='right__canvas' src="step-1.html"></iframe>
+                            <div><img id="step-button-1" class="modal-button" src="../img/playbutton.png" alt="expand-example"></div>
+                            <div id="iframe-container-1"><iframe id="iframe-1" class='right__canvas' src="step-1.html"></iframe></div>
                             <div id="editor-1" class="editor"></div>
                         </div>
                     </div>
@@ -51,16 +52,18 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">ctx = myGameArea.context;</p>
                     </div>
-                    <h2 id="step-heading-2" class="step-heading">Step 2: Add Component</h2>
+                    <h2 id="step-heading-2" class="step-heading">2. The Avatar</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>The next step is to add a component to the game area that will become the player character. For now, a simple square will do.
-                                <br><br>A new function, 'component', has been added. It is a constructor that specifies the dimensions, position and color of a square to 
-                                be drawn on the canvas. A new line in the startGame() function calls this function and passes it the parameters needed, thereby creating a new 
+                            <p>The first thing to be added to the game is the player avatar. This entity is a representation of the players agency, through the control of which the player
+                                will be able to interface with the game world. It is fitting that it is the first entity to populate the game world.
+                                <br><br>A new function, 'component()', has been added. It is a constructor function that specifies a template that can be used to instantiate objects.
+                                A new line in the startGame() function uses component() to create a new instance of itself with a particular set of values, essentially creating a new 
                                 component named myGamePiece() on the canvas.</p>
                         </div>
                         <div class="step__right">
-                            <iframe class='right__canvas' src="step-2.html"></iframe>
+                            <div><img id="step-button-2" class="modal-button" src="../img/playbutton.png" alt="expand-example"></div>
+                            <div id="iframe-container-2"><iframe id="iframe-2" class='right__canvas' src="step-2.html"></iframe></div>
                             <div id="editor-2" class="editor"></div>
                         </div>
                     </div>
@@ -72,20 +75,21 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">clear : function() {</p>
                     </div>
-                    <h2 id="step-heading-3" class="step-heading">Step 3: Specify Frames</h2>
+                    <h2 id="step-heading-3" class="step-heading">3. The Passage of Time</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>To allow the game area to display activity, the display will need to be regularly updated. To do this, an interval
+                            <p>For events to occur, there must be the passage of time. The game area must update itself in order for things to progress. To do this, an interval 
                                 must be specified that governs how many times a second the display is updated.<br><br>myGameArea() has had a new property
-                                added to its start method called interval that specifies what function to execute at what frequency. The function to be called is a new function
-                                called updateGameArea() that calls two new methods: myGameArea.clear() and myGamePiece.update().<br><br>clear() has
+                                added to its start method called interval. This specifies what function to execute at what frequency. The function to be called is a new function
+                                called updateGameArea() that currently does two things: myGameArea.clear() and myGamePiece.update().<br><br>clear() has
                                 been added to myGameArea() and when called, clears the display. update() has been added to the component constructor so when myGamePiece is 
                                 created via this constructor it will have update() as a method. The logic that determines the position and appearance of myGamePiece
                                 is now contained in this method and is updated when the method is called.<br><br>Now every frame the game area clears and the game piece 
                                 redraws itself based on its current properties.</p>
                         </div>
                         <div class="step__right">
-                            <iframe class='right__canvas' src="step-3.html"></iframe>
+                            <div><img id="step-button-3" class="modal-button" src="../img/playbutton.png" alt="expand-example"></div>
+                            <div id="iframe-container-3"><iframe id="iframe-3" class='right__canvas' src="step-3.html"></iframe></div>
                             <div id="editor-3" class="editor"></div>
                         </div>
                     </div>
@@ -97,14 +101,14 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">clear: function ()</p>
                     </div>
-                    <h2 id="step-heading-4" class="step-heading">Step 4: The Board is Set</h2>
+                    <h2 id="step-heading-4" class="step-heading">4. The Board is Set</h2>
                     <div class="step-container">
                         <div class="step__left">
                             <p>Now the fundamentals of a game environment have been established. A game area myGameArea() exists that can be drawn on and cleared
-                                that has a set interval.<br><br>A function updateGameArea() exists that governs what is to happen each interval.<br><br>A component constructor function
+                                that has a set interval.<br><br>A function updateGameArea() exists that governs what is to happen each interval.<br><br>A constructor function
                                 component() exists that can create a component with dimension and position data and a method that can update this data.<br><br>And finally there is
-                                a function startGame() that starts the game and creates a component called myGamePiece.<br><br>The next steps will be concerned
-                                with adding functionality to this setup.</p>
+                                a function startGame() that starts the game and creates a component called myGamePiece.<br><br>All the things that are needed for events and actions to occur are in
+                            place, all that remains is to provide the means to invoke them.</p>
                         </div>
                         <div class="step__right">
                             <div id="editor-4" class="editor"></div>
@@ -118,21 +122,22 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater"> = event.offsetY;</p>
                     </div>
-                    <h2 id="step-heading-5" class="step-heading">Step 5: Movement</h2>
+                    <h2 id="step-heading-5" class="step-heading">5. Reaching into the World</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Now that the game area is set up, it is time to begin adding functionality to the game itself. The first logical step is to enable
-                                the user to move the game piece by inputting controls.<br><br>For this game the game piece should follow the mouse cursor or, if
+                            <p>Now that we have a world in which objects can be created and time passes, it is time to begin adding functionality to the game itself. The first logical step is to enable
+                                the user to move the avatar.<br><br>For this game the game piece should follow the mouse cursor or, if
                                 on a touch screen, the users finger press. This can be achieved by modifying the piece's current position
                                 by a certain amount on based on the position of the cursor each frame. The simplest way to implement this is by taking the cursor position
                                 each frame and setting the piece's position to match that. For that to happen the game piece needs a method that changes the piece's position
-                                data each frame.<br><br>newPos() has been added to the component class. It takes an x and a y coordinate and updates the 
+                                data each frame.<br><br>newPos() has been added to the component constructor. This method takes an x and a y coordinate and updates the 
                                 components position values. The coordinates are retrieved using an event listener. New code has been added to the start method 
                                 of the game area. On start, an event listener that fires on mouse move retrieves the coordinates and stores them in the properties
-                                of the game area.</p>
+                                of the game area.<br><br>The player can now reach into the world and have their presence felt.</p>
                         </div>
                         <div class="step__right">
-                            <iframe class='right__canvas' src="step-5.html"></iframe>
+                            <div><img id="step-button-5" class="modal-button" src="../img/playbutton.png" alt="expand-example"></div>
+                            <div id="iframe-container-5"><iframe id="iframe-5" class='right__canvas' src="step-5.html"></iframe></div>
                             <div id="editor-5" class="editor"></div>
                         </div>
                     </div>
@@ -144,11 +149,11 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">this.maxSpeed = speed;</p>
                     </div>
-                    <h2 id="step-heading-6" class="step-heading">Step 6: Modifying Movement</h2>
+                    <h2 id="step-heading-6" class="step-heading">6. Structure</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Whilst in the previous example the game piece is essentially teleported to the cursor each frame, in this example the 
-                                game piece moves more fluidly and has been constrained to one axis. To achieve this, several new lines of code have been
+                            <p>Whilst in the previous example the game piece is essentially teleported to the cursor each frame, giving the player unlimited freedom, some restriction is required to
+                                achieve a structured and meaningful existence. To achieve this, several new lines of code have been
                                 added, including a new function called clamp(). This function clamp() takes three numbers. The second and third numbers passed are used to clamp
                                 the first number passed, that is to say that the first number cannot go below the second, nor above the third. This function constrains a number to an upper and
                                 lower limit.
@@ -160,7 +165,8 @@ and open the template in the editor.
                                 component when it is called by startGame().</p>
                         </div>
                         <div class="step__right">
-                            <iframe class='right__canvas' src="step-6.html"></iframe>
+                            <div><img id="step-button-6" class="modal-button" src="../img/playbutton.png" alt="expand-example"></div>
+                            <div id="iframe-container-6"><iframe id="iframe-6" class='right__canvas' src="step-6.html"></iframe></div>
                             <div id="editor-6" class="editor"></div>
                         </div>
                     </div>
@@ -175,17 +181,22 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">if (enemyPiece.active)</p>
                     </div>
-                    <h2 id="step-heading-7" class="step-heading">Step 7: Enemy</h2>
+                    <h2 id="step-heading-7" class="step-heading">7. Adversity</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Split the component class into player char and enemy basic
-                                added random enemy spawn chance
-                                added enemy move left and destruct when hit left
-                                <br><br>
+                            <p>The game world is meaningless without a motivating factor. The presence of an adversary will provide that motivation.<br><br>
+                                The component constructor has been split onto two separate constructors. One creates the player avatar, the other creates a new component called enemyBasic
+                                with a different set of properties. These properties mean the enemyBasic travels automatically in a straight line towards the left, then sets itself to inactive.
+                                A new piece of code has a chance to create an enemyBasic at a random point on the right edge of the world. 
+                                An accompanying block of code checks the enenmyBasic to see if it is active before updating and redrawing it. 
+                                Because the code that creates an enemyBasic overwrites the existing enemyBasic, only one can exist at any given time. The game world has no way of keeping track of more than one
+                                instance name enemyPiece.
+                                <br><br>Now there exists a foreign entity that acts on it's own accord and will form the basis for the conflict in the game.
                             </p>
                         </div>
                         <div class="step__right">
-                            <iframe class='right__canvas' src="step-7.html"></iframe>
+                            <div><img id="step-button-7" class="modal-button" src="../img/playbutton.png" alt="expand-example"></div>
+                            <div id="iframe-container-7"><iframe id="iframe-7" class='right__canvas' src="step-7.html"></iframe></div>
                             <div id="editor-7" class="editor"></div>
                         </div>
                     </div>
@@ -197,16 +208,18 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">if ((Math.random() * 1000) > 990)</p>
                     </div>
-                    <h2 id="step-heading-8" class="step-heading">Step 8: Enemies</h2>
+                    <h2 id="step-heading-8" class="step-heading">8. Enemies</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>New enemies get pushed to an array. Array is looped through and all enemies in array are moved and updated.
-                                Array is filtered to remove inactive enemies to prevent bloat.
-                                <br><br>
+                            <p>The game world must be upgraded. The enemyBasic must be able to co-exist with itself. To achieve this, the world must store a list of enemyBasics, each a unique instance of the constructor.
+                                An array in myGameArea must be created, and the code that creates new enemyBasics must append these new entities to this list. In such a way, multiple unique enemyBasics are able to exist side by side.
+                                <br><br>However, there is a problem. Each new enemyBasic leads to a new entry in the list, which will keep growing forever. An additional piece of code must also be created that checks for inactive enemyBasics
+                                and removes them. The filter method will achieve this goal.
                             </p>
                         </div>
                         <div class="step__right">
-                            <iframe class='right__canvas' src="step-8.html"></iframe>
+                            <div><img id="step-button-8" class="modal-button" src="../img/playbutton.png" alt="expand-example"></div>
+                            <div id="iframe-container-8"><iframe id="iframe-8" class='right__canvas' src="step-8.html"></iframe></div>
                             <div id="editor-8" class="editor"></div>
                         </div>
                     </div>
@@ -221,16 +234,20 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">myGameArea.stop();</p>
                     </div>
-                    <h2 id="step-heading-9" class="step-heading">Step 9: Collision Detection</h2>
+                    <h2 id="step-heading-9" class="step-heading">9. First Contact</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Added in start and stop functionality. When game is clicked on it plays, when it loses focus it pauses.
-                                stop() function added that pauses frames. Collision detection and handling added.
-                                <br><br>
+                            <p>Now the entites must be able to interact with each other. A function collision() must be created that can discern if two given entities are intersecting.
+                                Another function collisionHandler() then decides what to do with that information. In this case, if an enemyBasic touches the player avatar, the game stops.
+                                This is achieved by using a function that clears the interval that dictates the rate of the passage of time.
+                                <br><br>The function that is used to stop time can also be invoked when the player clicks outside of the world. This means that if they move their attention away from the game, 
+                                it waits in a frozen state for the player to return. click and blur listeners working in tandem to set and unset the interval can achieve the desired effect.
+                   
                             </p>
                         </div>
                         <div class="step__right">
-                            <iframe class='right__canvas' src="step-9.html"></iframe>
+                            <div><img id="step-button-9" class="modal-button" src="../img/playbutton.png" alt="expand-example"></div>
+                            <div id="iframe-container-9"><iframe id="iframe-9" class='right__canvas' src="step-9.html"></iframe></div>
                             <div id="editor-9" class="editor"></div>
                         </div>
                     </div>
@@ -245,12 +262,13 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">this.x = x;</p>
                     </div>
-                    <h2 id="step-heading-10" class="step-heading">Step 10: The Pieces are Moving</h2>
+                    <h2 id="step-heading-10" class="step-heading">10. The Pieces are Moving</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Added in start and stop functionality. When game is clicked on it plays, when it loses focus it pauses.
-                                stop() function added that pauses frames. Collision detection and handling added.
+                            <p>The world is now alive. This is a game. The player avatar can be manipulated, and must do so to avoid the enemyBasics that are relentlessly spawned and will end the game if the collide with the avatar.
+                                
                                 <br><br>
+                                This is a game at the most basic level. The following steps are enhancements on the core functionality that serve to make the world more interesting and the game more exciting.
                             </p>
                         </div>
                         <div class="step__right">
@@ -268,10 +286,10 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">$(myGameArea.playerMissiles)</p>
                     </div>
-                    <h2 id="step-heading-11" class="step-heading">Step 11: The Black Square Strikes Back</h2>
+                    <h2 id="step-heading-11" class="step-heading">11. The Player Strikes Back</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Black square fires missiles on click to click location. Missiles accelerate towards target location 
+                            <p>Avatar can fire missiles on click to click location. Missiles accelerate towards target location 
                                 and self destruct when they reach target location.
                                 Missiles that collide with enemies before self destruction are destroyed, along with the enemy.
                                 Moving values to the inside of object classes. No need to pass stuff that won't change.
@@ -280,7 +298,8 @@ and open the template in the editor.
                             </p>
                         </div>
                         <div class="step__right">
-                            <iframe class='right__canvas' src="step-11.html"></iframe>
+                            <div><img id="step-button-11" class="modal-button" src="../img/playbutton.png" alt="expand-example"></div>
+                            <div id="iframe-container-11"><iframe id="iframe-11" class='right__canvas' src="step-11.html"></iframe></div>
                             <div id="editor-11" class="editor"></div>
                         </div>
                     </div>
@@ -308,7 +327,8 @@ and open the template in the editor.
                             </p>
                         </div>
                         <div class="step__right">
-                            <iframe class='right__canvas' src="step-12.html"></iframe>
+                            <div><img id="step-button-12" class="modal-button" src="../img/playbutton.png" alt="expand-example"></div>
+                            <div id="iframe-container-12"><iframe id="iframe-12" class='right__canvas' src="step-12.html"></iframe></div>
                             <div id="editor-12" class="editor"></div>
                         </div>
                     </div>
