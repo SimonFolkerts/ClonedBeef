@@ -26,10 +26,6 @@ body, html {
     background-color: #FFFFFF;
 }
 
-#uparrow {
-    height: 70%;
-}
-
 #page-heading {
     color: #B68F40;
 }
@@ -187,12 +183,31 @@ body, html {
     height: 330px;
 }
 
+.game-container {
+    position: relative;
+}
+
 .game-area {
-    
     background-color: white;
     position: relative;
     width: 480px;
     height: 320px;
+}
+
+.modal {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute !important;
+    background-color: #505050;
+    position: relative;
+    width: 480px;
+    height: 320px;
+    z-index: 1;
+}
+
+.playbutton {
+    position: absolute;
 }
 
 .count {
@@ -209,12 +224,16 @@ body, html {
     /*height: 150px;*/
 }
 
+.hidden {
+    display: none;
+}
+
 /***********FLOATERS********/
 
 .parallax {
     position: absolute;
-    left: -10%;
-    width: 100%;
+    left: -50%;
+    width: 175%;
     height: 100vh;
     z-index: 0;
 }
@@ -256,11 +275,11 @@ body, html {
 
 @media (max-width: 1024px) {
     .step-heading {
-        font-size: 25px;
+        font-size: 2em;
     }
 
     .page-marker {
-        font-size: 20px;
+        font-size: 1.5em;
     }
 
     .step-container {
@@ -273,11 +292,15 @@ body, html {
 
 @media (max-width: 640px) {    
     #page-heading {
-        font-size: 20px;
+        font-size: 1em;
     }
 
     #uparrow {
         height: 50%;
+    }
+    
+    .parallax {
+        display: none;
     }
 
     .section-container {
@@ -289,21 +312,17 @@ body, html {
     }
 
     .step-heading {
-        font-size: 20px;
+        font-size: 1.3em;
         padding-bottom: 10px;
     }
 
     .step__left {
-        font-size: 15px;
+        font-size: 1em;
     }
 
     .step__right {
         width: 100%;
         padding: 0px;
-    }
-
-    .right__canvas {
-        display: none;
     }
 
     .right__button {
@@ -317,29 +336,32 @@ body, html {
 
 @media (max-height: 640px) {
     #page-heading {
-        font-size: 20px;
+        font-size: 1em;
     }
 }
 
 @media (max-width: 420px) {
+    #page-heading {
+        font-size: 0.7em;
+    }
     .step-container {
         padding-left: 12px;
     }
 
     .step-heading {
-        font-size: 15px;
+        font-size: 0.8em;
     }
 
     .step__left {
-        font-size: 12px;
+        font-size: 0.7em;
     }
     
     .editor {
-        font-size: 10px !important;
+        font-size: 0.6em !important;
     }
 
     .page-marker{
-        font-size: 12px;
+        font-size: 0.8em;
         padding-left: 10%;
     }
 

@@ -1,8 +1,9 @@
 (function () {
     var step = 11;
 
-    $("#canvas-step-" + step).click(function () {
+    $(window).click(function () {
         if (!myGameArea.canvas) {
+            $('#modal-step-11').addClass('hidden');
             startGame();
         } else if (!myGameArea.active) {
             myGameArea.interval = setInterval(updateGameArea, 20);

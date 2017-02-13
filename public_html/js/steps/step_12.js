@@ -1,8 +1,9 @@
 (function () {
     var step = 12;
 
-    $("#canvas-step-" + step).click(function () {
+    $(window).click(function () {
         if (!myGameArea.canvas) {
+            $('#modal-step-12').addClass('hidden');
             startGame();
         } else if (!myGameArea.active) {
             myGameArea.interval = setInterval(updateGameArea, 20);
@@ -15,7 +16,7 @@
 
     function startGame() {
         myGameArea.start();
-        myGamePiece = new playerCharacter(30, 30, "black", 20, 120, 15, 100);
+        myGamePiece = new playerCharacter(30, 30, "black", 20, 120, 30, 150);
         enemyPiece = new enemyBasic(30, 30, "red", 490, (Math.random() * 280), 0, -3);
     }
 

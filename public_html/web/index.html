@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html lang="en">
     <head>
         <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet">
         <link rel="stylesheet" href="../css/stylesheet.css" type="text/css">
@@ -16,9 +16,7 @@ and open the template in the editor.
     </head>
     <body>
         <header id="header">
-            <img id="uparrow" src="../img/uparrow.png" alt="back to top">
-            <h1 id="page-heading">Page Heading</h1>
-            <div class="spacer"></div>
+            <h1 id="page-heading">Simple Javascript Game Development</h1>
         </header>
         <div id="main-container">
             <div id="scroller">
@@ -30,10 +28,7 @@ and open the template in the editor.
                         <p class="background-floater">function startGame()</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">this.context = this.canvas.getContext("2d);");</p>
-                    </div>
-                    <div class="parallax">
-                        <p class="background-floater">myGameArea.start();</p>
+                        <p class="background-floater">this.canvas.getContext("2d);");</p>
                     </div>
                     <h2 id="step-heading-1" class="step-heading">Step 1: Create the Game Area</h2>
                     <div class="step-container">
@@ -56,9 +51,6 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">ctx = myGameArea.context;</p>
                     </div>
-                    <div class="parallax">
-                        <p class="background-floater">ctx.fillstyle = color;</p>
-                    </div>
                     <h2 id="step-heading-2" class="step-heading">Step 2: Add Component</h2>
                     <div class="step-container">
                         <div class="step__left">
@@ -75,13 +67,10 @@ and open the template in the editor.
                 </section>
                 <section id="section-3" class="section-container">
                     <div class="parallax">
-                        <p class="background-floater">1</p>
+                        <p class="background-floater">setInterval(updateGameArea, 20);</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">2</p>
-                    </div>
-                    <div class="parallax">
-                        <p class="background-floater">3</p>
+                        <p class="background-floater">clear : function() {</p>
                     </div>
                     <h2 id="step-heading-3" class="step-heading">Step 3: Specify Frames</h2>
                     <div class="step-container">
@@ -103,13 +92,10 @@ and open the template in the editor.
                 </section>
                 <section id="section-4" class="section-container">
                     <div class="parallax">
-                        <p class="background-floater">1</p>
+                        <p class="background-floater">start: function ()</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">2</p>
-                    </div>
-                    <div class="parallax">
-                        <p class="background-floater">3</p>
+                        <p class="background-floater">clear: function ()</p>
                     </div>
                     <h2 id="step-heading-4" class="step-heading">Step 4: The Board is Set</h2>
                     <div class="step-container">
@@ -121,22 +107,16 @@ and open the template in the editor.
                                 with adding functionality to this setup.</p>
                         </div>
                         <div class="step__right">
-                            <!--<div class="right__canvas">-->
-                            <!--<canvas id="canvas-step-3" class="game-area"></canvas>-->
-                            <!--</div>-->
                             <div id="editor-4" class="editor"></div>
                         </div>
                     </div>
                 </section>
                 <section id="section-5" class="section-container">
                     <div class="parallax">
-                        <p class="background-floater">1</p>
+                        <p class="background-floater">myGameArea.mouseX;</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">2</p>
-                    </div>
-                    <div class="parallax">
-                        <p class="background-floater">3</p>
+                        <p class="background-floater"> = event.offsetY;</p>
                     </div>
                     <h2 id="step-heading-5" class="step-heading">Step 5: Movement</h2>
                     <div class="step-container">
@@ -159,13 +139,10 @@ and open the template in the editor.
                 </section>
                 <section id="section-6" class="section-container">
                     <div class="parallax">
-                        <p class="background-floater">1</p>
+                        <p class="background-floater">this.acceleration = accel;</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">2</p>
-                    </div>
-                    <div class="parallax">
-                        <p class="background-floater">3</p>
+                        <p class="background-floater">this.maxSpeed = speed;</p>
                     </div>
                     <h2 id="step-heading-6" class="step-heading">Step 6: Modifying Movement</h2>
                     <div class="step-container">
@@ -190,13 +167,13 @@ and open the template in the editor.
                 </section>
                 <section id="section-7" class="section-container">
                     <div class="parallax">
-                        <p class="background-floater">1</p>
+                        <p class="background-floater">this.active = true;</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">2</p>
+                        <p class="background-floater">new enemyBasic()</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">3</p>
+                        <p class="background-floater">if (enemyPiece.active)</p>
                     </div>
                     <h2 id="step-heading-7" class="step-heading">Step 7: Enemy</h2>
                     <div class="step-container">
@@ -215,13 +192,10 @@ and open the template in the editor.
                 </section>
                 <section id="section-8" class="section-container">
                     <div class="parallax">
-                        <p class="background-floater">1</p>
+                        <p class="background-floater">filter(function(enemyBasic)</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">2</p>
-                    </div>
-                    <div class="parallax">
-                        <p class="background-floater">3</p>
+                        <p class="background-floater">if ((Math.random() * 1000) > 990)</p>
                     </div>
                     <h2 id="step-heading-8" class="step-heading">Step 8: Enemies</h2>
                     <div class="step-container">
@@ -239,13 +213,13 @@ and open the template in the editor.
                 </section>
                 <section id="section-9" class="section-container">
                     <div class="parallax">
-                        <p class="background-floater">1</p>
+                        <p class="background-floater">function collision(a, b)</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">2</p>
+                        <p class="background-floater">function collisionHandler()</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">3</p>
+                        <p class="background-floater">myGameArea.stop();</p>
                     </div>
                     <h2 id="step-heading-9" class="step-heading">Step 9: Collision Detection</h2>
                     <div class="step-container">
@@ -263,13 +237,13 @@ and open the template in the editor.
                 </section>
                 <section id="section-10" class="section-container">
                     <div class="parallax">
-                        <p class="background-floater">1</p>
+                        <p class="background-floater">if (this.x &= 0) {</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">2</p>
+                        <p class="background-floater">this.x += -3;</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">3</p>
+                        <p class="background-floater">this.x = x;</p>
                     </div>
                     <h2 id="step-heading-10" class="step-heading">Step 10: The Pieces are Moving</h2>
                     <div class="step-container">
@@ -286,13 +260,13 @@ and open the template in the editor.
                 </section>
                 <section id="section-11" class="section-container">
                     <div class="parallax">
-                        <p class="background-floater">1</p>
+                        <p class="background-floater">function playerMissile()</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">2</p>
+                        <p class="background-floater">this.active = false;</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">3</p>
+                        <p class="background-floater">$(myGameArea.playerMissiles)</p>
                     </div>
                     <h2 id="step-heading-11" class="step-heading">Step 11: The Black Square Strikes Back</h2>
                     <div class="step-container">
@@ -313,7 +287,7 @@ and open the template in the editor.
                 </section>
                 <section id="section-12" class="section-container">
                     <div class="parallax">
-                        <p class="background-floater">1</p>
+                        <p class="background-floater">if (mouseOver(this) && !this.targeted) {</p>
                     </div>
                     <div class="parallax">
                         <p class="background-floater">2</p>
