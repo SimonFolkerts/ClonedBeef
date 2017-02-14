@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet">
         <link rel="stylesheet" href="../css/stylesheet.css" type="text/css">
-        <title>TODO supply a title</title>
+        <title>Simple Javascript Game Development</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -309,10 +309,10 @@ and open the template in the editor.
                         <p class="background-floater">if (mouseOver(this) && !this.targeted) {</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">2</p>
+                        <p class="background-floater">Math.atan2(y,x)</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">3</p>
+                        <p class="background-floater"></p>
                     </div>
                     <h2 id="step-heading-12" class="step-heading">Step 12: Refined Mechanics</h2>
                     <div class="step-container">
@@ -335,24 +335,21 @@ and open the template in the editor.
                 </section>
                 <section id="section-13" class="section-container">
                     <div class="parallax">
-                        <p class="background-floater">if (mouseOver(this) && !this.targeted) {</p>
+                        <p class="background-floater">Math.cos(radians)</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">2</p>
+                        <p class="background-floater">radians = Math.atan2(y,x);</p>
                     </div>
                     <div class="parallax">
-                        <p class="background-floater">3</p>
+                        <p class="background-floater"></p>
                     </div>
-                    <h2 id="step-heading-13" class="step-heading">Step 13: Refined Mechanics</h2>
+                    <h2 id="step-heading-13" class="step-heading">Step 13: Icing on the Cake</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Missiles cannot be dumbfired. Instead, when the cursor passes over an enemey whilst a mouse button is pressed down, that enemy and any others the
-                                cursor passes over will be appended to an array. Upon release of the button, the list is rapidly looped through, and a barrage of missiles is fired, 
-                                one per target. Two mouse event listeners were added that account for presses and releases of mouse buttons.
-                                Missiles will only collide and annhilate their designated target. Missiles are passed a specific target object instead of just coords
-                                Missiles will home in on their designated target (still nondirectional). Missiles will self destruct after 1.5 seconds.
-                                Frequency of enemies increases with time.                                
-                                <br><br>
+                            <p>Missiles now emit exhaust particles that are launched relative to the missiles direction. Enemies now emit explosion particles upon death.
+                                Missiles will angle towards their target. Aim-points tweaked to aim for center, not top left.
+                                <br><br>Enemies will now travel at a randomised speed. Lock on effect is more visually interesting now. Score counter added. Reset on fail added.
+                                Visual prompts to indicate game state added.
                             </p>
                         </div>
                         <div class="step__right">

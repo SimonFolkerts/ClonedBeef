@@ -1,7 +1,7 @@
-(function() {
+(function () {
     var step = 13;
 
-    $(window).click(function() {
+    $(window).click(function () {
         if (!myGameArea.canvas) {
             $('#modal-step-13').addClass('hidden');
             startGame();
@@ -10,23 +10,24 @@
             myGameArea.active = true;
         }
     });
-    $(window).blur(function() {
-        myGameArea.stop();
+    $(window).blur(function () {
+        myGameArea.pause();
     });
 
     function startGame() {
         myGameArea.start();
         myGamePiece = new playerCharacter(30, 30, "black", 20, 120, 30, 150);
-        enemyPiece = new enemyBasic(30, 30, "red", 490, (Math.random() * 280), 0, -3);
     }
 
     var myGameArea = {
-        start: function() {
+        start: function () {
             this.active = true;
+            this.terminate = false;
             this.enemies = [];
             this.playerMissiles = [];
             this.explodyBits = [];
             this.exhausts = [];
+            this.crosshairs = [];
             this.frameNo = 0;
             this.canvas = document.getElementById('canvas-step-' + (step));
             this.canvas.width = 480;
@@ -36,23 +37,42 @@
             this.mouseX = 0;
             this.mouseY = 0;
             this.mouseDown = false;
-            this.canvas.addEventListener("mousemove", function(event) {
+            this.score = 0;
+            this.canvas.addEventListener("mousemove", function (event) {
                 myGameArea.mouseX = event.offsetX;
                 myGameArea.mouseY = event.offsetY;
             });
-            this.canvas.addEventListener("mousedown", function() {
+            this.canvas.addEventListener("mousedown", function () {
+                if (myGameArea.terminate) {
+                    myGameArea.start();
+                }
                 myGameArea.mouseDown = true;
             });
-            this.canvas.addEventListener("mouseup", function() {
+            this.canvas.addEventListener("mouseup", function () {
                 myGameArea.mouseDown = false;
             });
         },
-        clear: function() {
+        clear: function () {
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         },
-        stop: function() {
+        pause: function () {
             clearInterval(this.interval);
             this.active = false;
+            this.updateScore();
+        },
+        stop: function () {
+            clearInterval(this.interval);
+            this.active = false;
+            this.terminate = true;
+        },
+        updateScore: function () {
+            ctx = myGameArea.context;
+            ctx.font = "20px Arial";
+            if (!this.active && !this.terminate) {
+                ctx.fillText(this.score + ' - PAUSED', 5, 20);
+            } else {
+                ctx.fillText(this.score, 5, 20);
+            }
         }
     };
 
@@ -67,13 +87,19 @@
         this.maxSpeed = speed;
         this.targets = [];
         this.i = 0;
-        this.update = function() {
+        this.midpoint = function () {
+            return {
+                x: this.x + this.width / 2,
+                y: this.y + this.height / 2
+            };
+        };
+        this.update = function () {
             ctx = myGameArea.context;
             ctx.fillStyle = this.color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
             this.fireControl();
         };
-        this.fireControl = function() {
+        this.fireControl = function () {
             if (!myGameArea.mouseDown && this.targets.length >= 1) {
                 if (this.i <= this.targets.length && (myGameArea.frameNo % 3 === 0)) {
                     this.i = 0;
@@ -84,11 +110,11 @@
             }
             ;
         };
-        this.newPos = function(targetY) {
+        this.newPos = function (targetY) {
             this.y += (clamp((targetY - this.y), -this.maxSpeed, this.maxSpeed)) / this.acceleration;
         };
-        this.fire = function(target) {
-            myGameArea.playerMissiles.push(new playerMissile(myGamePiece.x, myGamePiece.y, target));
+        this.fire = function (target) {
+            myGameArea.playerMissiles.push(new playerMissile(myGamePiece.midpoint().x, myGamePiece.midpoint().y, target));
         };
     }
 
@@ -99,11 +125,17 @@
         this.height = height;
         this.x = x;
         this.y = y;
+        this.midpoint = function () {
+            return {
+                x: this.x + this.width / 2,
+                y: this.y + this.height / 2
+            };
+        };
         this.color = color;
         this.acceleration = accel;
         this.speed = speed;
         this.targeted = false;
-        this.update = function() {
+        this.update = function () {
             ctx = myGameArea.context;
             ctx.fillStyle = this.color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -113,42 +145,88 @@
             if (mouseOver(this) && !this.targeted) {
                 if (myGameArea.mouseDown) {
                     this.targeted = true;
-                    this.color = 'yellow';
                     myGamePiece.targets.push(this);
+                    myGameArea.crosshairs.push(new crosshair(this.midpoint().x, this.midpoint().y, 100, 100, this));
                 }
             }
         };
-        this.newPos = function() {
+        this.newPos = function () {
             this.x += this.speed;
+        };
+    }
+
+    function crosshair(x, y, width, height, parent) {
+        this.age = 0;
+        this.active = true;
+        this.width = width;
+        this.height = height;
+        this.x = x;
+        this.y = y;
+        this.color = 'red';
+        this.parent = parent;
+        this.midpoint = function () {
+            return {
+                x: this.x - this.width / 2,
+                y: this.y - this.height / 2
+            };
+        };
+        this.update = function () {
+            this.age++;
+            if (this.width > 45 & this.age > 5) {
+                this.width -= 10;
+                this.height -= 10;
+            }
+            ctx = myGameArea.context;
+            ctx.strokeStyle = this.color;
+            ctx.lineWidth = 1;
+            ctx.strokeRect(this.midpoint().x, this.midpoint().y, this.width, this.height);
+            if (!this.parent.active) {
+                this.active = false;
+            }
+        };
+        this.newPos = function () {
+            this.x = this.parent.midpoint().x;
+            this.y = this.parent.midpoint().y;
         };
     }
 
     function playerMissile(x, y, target) {
         this.active = true;
         this.age = 0;
-        this.width = 15;
-        this.height = 15;
+        this.width = 20;
+        this.height = 10;
         this.x = x;
         this.y = y;
+        this.midpoint = function () {
+            return {
+                x: this.x + this.width / 2,
+                y: this.y + this.height / 2
+            };
+        };
+        this.angle = 0;
         this.velocityX;
         this.velocityY;
         this.acceleration = 0.3;
         this.thrust = 0;
         this.target = target;
-        this.update = function() {
+        this.update = function () {
             this.age++;
+            this.getAngle();
             ctx = myGameArea.context;
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.angle);
             ctx.fillStyle = "blue";
-            ctx.fillRect(this.x, this.y, this.width, this.height);
-            if (Math.abs(this.x - this.targetX) < 8 || this.age > 75) {
+            ctx.fillRect(0, 0, this.width, this.height);
+            ctx.restore();
+            if (this.age > 75) {
                 this.active = false;
             }
-            myGameArea.exhausts.push(new exhaust(this.x, this.y));
-
+            myGameArea.exhausts.push(new exhaust(this.midpoint().x, this.midpoint().y, this.angle));
         };
-        this.newPos = function() {
-            var tx = this.target.x - this.x;
-            var ty = this.target.y - this.y;
+        this.newPos = function () {
+            var tx = (this.target.midpoint().x) - this.x;
+            var ty = (this.target.midpoint().y) - this.y;
             var dist = Math.sqrt(tx * tx + ty * ty);
 
             this.thrust = this.thrust + this.acceleration;
@@ -159,6 +237,11 @@
             this.x += this.velocityX;
             this.y += this.velocityY;
         };
+        this.getAngle = function () {
+            var x = this.x - (this.target.midpoint().x);
+            var y = this.y - (this.target.midpoint().y);
+            this.angle = (Math.atan2(y, x)) - Math.PI;
+        };
     }
 
     function explodyBit(x, y) {
@@ -168,12 +251,18 @@
         this.height = 5;
         this.x = x;
         this.y = y;
+        this.midpoint = function () {
+            return {
+                x: this.x - this.width / 2,
+                y: this.y - this.height / 2
+            };
+        };
         this.velocityX;
         this.velocityY;
         this.acceleration = -0.3;
         this.thrust = (Math.random() * 3) + 5;
         this.angle = (Math.random() * 360) - 180;
-        this.update = function() {
+        this.update = function () {
             this.age++;
             ctx = myGameArea.context;
             ctx.fillStyle = "red";
@@ -182,7 +271,7 @@
                 this.active = false;
             }
         };
-        this.newPos = function() {
+        this.newPos = function () {
             this.thrust = this.thrust + this.acceleration;
 
             this.velocityX = Math.cos(this.angle) * this.thrust;
@@ -193,35 +282,43 @@
         };
     }
 
-    function exhaust(x, y) {
+    function exhaust(x, y, angle) {
         this.active = true;
         this.age = 0;
-
         this.x = x;
         this.y = y;
+        this.midpoint = function () {
+            return {
+                x: this.x - this.width / 2,
+                y: this.y - this.height / 2
+            };
+        };
         this.velocityX;
         this.velocityY;
         this.acceleration = -0.1;
         this.thrust = (Math.random() * 3) + 5;
-        this.angle = (Math.random() * 0.25) - 3.4;
-        this.update = function() {
+        this.angle = (Math.random() * 0.25) + angle - Math.PI;
+        this.lifetime = 50;
+        this.update = function () {
             this.age++;
-            this.width = 10 - (this.age);
-            this.height = 10 - (this.age);
+            this.width = (20 * (this.age / this.lifetime)) + 5;
+            this.height = (20 * (this.age / this.lifetime)) + 5;
             ctx = myGameArea.context;
             ctx.fillStyle = "#999999";
+            ctx.globalAlpha = 1 - (this.age / (this.lifetime + 1));
             ctx.fillRect(this.x, this.y, this.width, this.height);
-            if (this.x < 0 || this.age > 50) {
+            ctx.globalAlpha = 1.0;
+            if (this.x < 0 || this.age > this.lifetime) {
                 this.active = false;
             }
         };
-        this.newPos = function() {
+        this.newPos = function () {
             this.thrust = this.thrust + this.acceleration;
 
             this.velocityX = Math.cos(this.angle) * this.thrust;
             this.velocityY = Math.sin(this.angle) * this.thrust;
 
-            this.x += this.velocityX;
+            this.x += this.velocityX - 1;
             this.y += this.velocityY;
         };
     }
@@ -246,14 +343,16 @@
     }
 
     function collisionHandler() {
-        $(myGameArea.enemies).each(function() {
+        $(myGameArea.enemies).each(function () {
             enemy = this;
             if (collision(myGamePiece, enemy)) {
+                myGameArea.score = "FAILED AT " + myGameArea.score + ' - CLICK TO RESTART';
                 myGameArea.stop();
             }
         });
-        $(myGameArea.playerMissiles).each(function() {
+        $(myGameArea.playerMissiles).each(function () {
             if (collision(this.target, this)) {
+                myGameArea.score += 10;
                 this.target.active = false;
                 this.active = false;
                 for (var i = 0; i < 20; i++) {
@@ -267,51 +366,62 @@
         collisionHandler();
         myGameArea.clear();
         myGameArea.frameNo++;
-        
+
 
         if ((Math.random() * 1000) > (990 - myGameArea.frameNo / 100)) {
-            myGameArea.enemies.push(new enemyBasic(30, 30, "red", 490, (Math.random() * 280), 0, -3));
+            myGameArea.enemies.push(new enemyBasic(30, 30, "red", 490, (Math.random() * 280), 0, (Math.random() * -1.5 - 1)));
         }
         ;
 
-        myGameArea.enemies = myGameArea.enemies.filter(function(enemyBasic) {
+        myGameArea.enemies = myGameArea.enemies.filter(function (enemyBasic) {
             return enemyBasic.active;
         });
 
-        $(myGameArea.enemies).each(function() {
+        $(myGameArea.enemies).each(function () {
             this.newPos();
             this.update();
         });
 
-        myGameArea.playerMissiles = myGameArea.playerMissiles.filter(function(playerMissile) {
-            return playerMissile.active;
-        });
-
-        $(myGameArea.playerMissiles).each(function() {
-            this.newPos();
-            this.update();
-        });
-
-        myGameArea.explodyBits = myGameArea.explodyBits.filter(function(explodyBit) {
-            return explodyBit.active;
-        });
-
-        $(myGameArea.explodyBits).each(function() {
-            this.newPos();
-            this.update();
-        });
-
-        myGameArea.exhausts = myGameArea.exhausts.filter(function(exhaust) {
+        myGameArea.exhausts = myGameArea.exhausts.filter(function (exhaust) {
             return exhaust.active;
         });
 
-        $(myGameArea.exhausts).each(function() {
+        $(myGameArea.exhausts).each(function () {
             this.newPos();
             this.update();
         });
-        
+
+        myGameArea.playerMissiles = myGameArea.playerMissiles.filter(function (playerMissile) {
+            return playerMissile.active;
+        });
+
+        $(myGameArea.playerMissiles).each(function () {
+            this.newPos();
+            this.update();
+        });
+
+        myGameArea.explodyBits = myGameArea.explodyBits.filter(function (explodyBit) {
+            return explodyBit.active;
+        });
+
+        $(myGameArea.explodyBits).each(function () {
+            this.newPos();
+            this.update();
+        });
+
         myGamePiece.newPos(myGameArea.mouseY);
         myGamePiece.update();
+
+        myGameArea.crosshairs = myGameArea.crosshairs.filter(function (crosshair) {
+            return crosshair.active;
+        });
+
+        $(myGameArea.crosshairs).each(function () {
+            this.newPos();
+            this.update();
+        });
+
+        myGameArea.updateScore();
     }
 })();
 
