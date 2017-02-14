@@ -34,9 +34,9 @@ and open the template in the editor.
                     <div class="step-container">
                         <div class="step__left">
                             <p>For anything to be able to happen, there needs to be a space in which it can happen. We must create the world in which the events that drive the game will take place.<br><br>
-                            Both the space itself, an html5 canvas element, and a javascript object myGameArea must be created that describes this space. This object has a method start(), and that method, when executed, 
-                            takes the space and assigns it values describing it's dimensions. There must also be a function starGame() that will set the process of 
-                            initializing the game in motion.<br><br>It is within this space, now stored by myGameArea, that the game will take place.<br><br></p>
+                                Both the space itself, an html5 canvas element, and a javascript object myGameArea must be created that describes this space. This object has a method start(), and that method, when executed, 
+                                takes the space and assigns it values describing it's dimensions. There must also be a function starGame() that will set the process of 
+                                initializing the game in motion.<br><br>It is within this space, now stored by myGameArea, that the game will take place.<br><br></p>
                         </div>
                         <div class="step__right">
                             <div><img id="step-button-1" class="modal-button" src="../img/playbutton.png" alt="expand-example"></div>
@@ -108,7 +108,7 @@ and open the template in the editor.
                                 that has a set interval.<br><br>A function updateGameArea() exists that governs what is to happen each interval.<br><br>A constructor function
                                 component() exists that can create a component with dimension and position data and a method that can update this data.<br><br>And finally there is
                                 a function startGame() that starts the game and creates a component called myGamePiece.<br><br>All the things that are needed for events and actions to occur are in
-                            place, all that remains is to provide the means to invoke them.</p>
+                                place, all that remains is to provide the means to invoke them.</p>
                         </div>
                         <div class="step__right">
                             <div id="editor-4" class="editor"></div>
@@ -242,7 +242,7 @@ and open the template in the editor.
                                 This is achieved by using a function that clears the interval that dictates the rate of the passage of time.
                                 <br><br>The function that is used to stop time can also be invoked when the player clicks outside of the world. This means that if they move their attention away from the game, 
                                 it waits in a frozen state for the player to return. click and blur listeners working in tandem to set and unset the interval can achieve the desired effect.
-                   
+
                             </p>
                         </div>
                         <div class="step__right">
@@ -266,7 +266,7 @@ and open the template in the editor.
                     <div class="step-container">
                         <div class="step__left">
                             <p>The world is now alive. This is a game. The player avatar can be manipulated, and must do so to avoid the enemyBasics that are relentlessly spawned and will end the game if the collide with the avatar.
-                                
+
                                 <br><br>
                                 This is a game at the most basic level. The following steps are enhancements on the core functionality that serve to make the world more interesting and the game more exciting.
                             </p>
@@ -330,6 +330,35 @@ and open the template in the editor.
                             <div><img id="step-button-12" class="modal-button" src="../img/playbutton.png" alt="expand-example"></div>
                             <div id="iframe-container-12"><iframe id="iframe-12" class='right__canvas' src="step-12.html"></iframe></div>
                             <div id="editor-12" class="editor"></div>
+                        </div>
+                    </div>
+                </section>
+                <section id="section-13" class="section-container">
+                    <div class="parallax">
+                        <p class="background-floater">if (mouseOver(this) && !this.targeted) {</p>
+                    </div>
+                    <div class="parallax">
+                        <p class="background-floater">2</p>
+                    </div>
+                    <div class="parallax">
+                        <p class="background-floater">3</p>
+                    </div>
+                    <h2 id="step-heading-13" class="step-heading">Step 13: Refined Mechanics</h2>
+                    <div class="step-container">
+                        <div class="step__left">
+                            <p>Missiles cannot be dumbfired. Instead, when the cursor passes over an enemey whilst a mouse button is pressed down, that enemy and any others the
+                                cursor passes over will be appended to an array. Upon release of the button, the list is rapidly looped through, and a barrage of missiles is fired, 
+                                one per target. Two mouse event listeners were added that account for presses and releases of mouse buttons.
+                                Missiles will only collide and annhilate their designated target. Missiles are passed a specific target object instead of just coords
+                                Missiles will home in on their designated target (still nondirectional). Missiles will self destruct after 1.5 seconds.
+                                Frequency of enemies increases with time.                                
+                                <br><br>
+                            </p>
+                        </div>
+                        <div class="step__right">
+                            <div><img id="step-button-13" class="modal-button" src="../img/playbutton.png" alt="expand-example"></div>
+                            <div id="iframe-container-13"><iframe id="iframe-13" class='right__canvas' src="step-13.html"></iframe></div>
+                            <div id="editor-13" class="editor"></div>
                         </div>
                     </div>
                 </section>
