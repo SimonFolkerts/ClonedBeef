@@ -97,6 +97,11 @@
             this.draw();
             this.fireControl();
         };
+        this.draw = function() {
+            ctx = myGameArea.context;
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        };
         this.fireControl = function() {
             if (!myGameArea.mouseDown && this.targets.length >= 1) {
                 if (this.i <= this.targets.length && (myGameArea.frameNo % 3 === 0)) {
