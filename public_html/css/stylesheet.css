@@ -220,6 +220,10 @@ body, html {
     max-height: 320px;
 }
 
+.no-cursor {
+    cursor: none;
+}
+
 .modal {
     display: flex;
     justify-content: space-around;
