@@ -1,9 +1,9 @@
 (function () {
-    var step = 14;
+    var step = 15;
 
-    $(window).click(function () {
+    $(window).on('tap click', function () {
         if (!gameArea.canvas) {
-            $('#modal-step-14').addClass('hidden');
+            $('#modal-step-15').addClass('hidden');
             startGame();
         } else if (!gameArea.active) {
             gameArea.interval = setInterval(updateGameArea, 20);
@@ -51,10 +51,31 @@
             this.bgImg = new Image();
             this.bgImg.src = '../img/background.jpg';
             this.bgCounter = 0;
-
+            this.getMousePos = function (mouseEvent) {
+                var rect = this.canvas.getBoundingClientRect();
+                gameArea.mouseX = mouseEvent.clientX - rect.left;
+                gameArea.mouseY = mouseEvent.clientY - rect.top;
+            };
+            this.getTouchPos = function (touchEvent) {
+                var rect = this.canvas.getBoundingClientRect();
+                gameArea.mouseX = touchEvent.touches[0].clientX - rect.left;
+                gameArea.mouseY = touchEvent.touches[0].clientY - rect.top;
+                if (event.target === gameArea.canvas) {
+                    event.preventDefault();
+                }
+            };
+            this.canvas.addEventListener("touchmove", function (event) {
+                gameArea.getTouchPos(event);
+            });
             this.canvas.addEventListener("mousemove", function (event) {
-                gameArea.mouseX = event.offsetX;
-                gameArea.mouseY = event.offsetY;
+                gameArea.getMousePos(event);
+            });
+            this.canvas.addEventListener("touchstart", function (event) {
+                gameArea.getTouchPos(event);
+                if (gameArea.terminate) {
+                    gameArea.start();
+                }
+                gameArea.mouseDown = true;
             });
             this.canvas.addEventListener("mousedown", function () {
                 if (gameArea.terminate) {
@@ -62,8 +83,10 @@
                 }
                 gameArea.mouseDown = true;
             });
-            this.canvas.addEventListener("mouseup", function () {
-                gameArea.mouseDown = false;
+            ['mouseup', 'touchend'].forEach(function (event) {
+                gameArea.canvas.addEventListener(event, function () {
+                    gameArea.mouseDown = false;
+                });
             });
         },
         background: function () {
