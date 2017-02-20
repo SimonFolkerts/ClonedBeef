@@ -16,7 +16,7 @@
 
     function startGame() {
         myGameArea.start();
-        myGamePiece = new playerCharacter(65, 35, "transparent", 20, 120, 35, 130);
+        myGamePiece = new playerCharacter(65, 35, "transparent", 15, 120, 35, 130);
     }
 
     var myGameArea = {
@@ -42,7 +42,7 @@
             this.score = 0;
 
             this.bgImg = new Image();
-            this.bgImg.src = '';
+            this.bgImg.src = '../img/background.jpg';
             this.bgCounter = 0;
 
             this.canvas.addEventListener("mousemove", function (event) {
@@ -60,12 +60,12 @@
             });
         },
         background: function () {
-            if (this.bgCounter <= 480) {
+            if (this.bgCounter <= 615) {
                 this.bgCounter++;
             } else {
                 this.bgCounter = 0;
             }
-            this.context.drawImage(this.bgImg, 0, 0, this.canvas.width * 2, 90, 0 - this.bgCounter, 0, this.canvas.width * 2, 90);
+            this.context.drawImage(this.bgImg, 0, 0, this.bgImg.width, 320, 0 - this.bgCounter, 0, this.bgImg.width, 320);
         },
         clear: function () {
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
