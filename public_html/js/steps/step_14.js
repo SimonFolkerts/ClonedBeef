@@ -30,13 +30,16 @@
             this.explodyBits = [];
             this.exhausts = [];
             this.crosshairs = [];
+            this.explosions = [];
             this.entities = [
                 [this.enemies],
                 [this.playerMissiles],
                 [this.explodyBits],
                 [this.exhausts],
-                [this.crosshairs]
+                [this.crosshairs],
+                [this.explosions]
             ];
+
             this.frameNo = 0;
             this.canvas = document.getElementById('canvas-step-' + (step));
             this.canvas.width = 480;
@@ -111,6 +114,7 @@
     };
 
     function cursor() {
+        this.active = true;
         this.hoverEnemy = false;
         this.image = new Image();
         this.image.src = '../img/cursor_sprite_sheet.png';
@@ -432,8 +436,8 @@
     function explodyBit(x, y) {
         this.active = true;
         this.age = 0;
-        this.width = 5;
-        this.height = 5;
+        this.width = Math.random() * 4;
+        this.height = Math.random() * 4;
         this.x = x;
         this.y = y;
         this.midpoint = function () {
@@ -447,26 +451,75 @@
         this.acceleration = -0.3;
         this.thrust = (Math.random() * 3) + 5;
         this.angle = (Math.random() * 360) - 180;
+        this.gravity = 0;
         this.update = function () {
             this.age++;
             this.draw();
-            if (this.thrust < 1 || this.age > 50) {
+            if (this.age > 300) {
                 this.active = false;
             }
         };
         this.draw = function () {
             ctx = gameArea.context;
-            ctx.fillStyle = "red";
+            ctx.fillStyle = "#262626";
             ctx.fillRect(this.x, this.y, this.width, this.height);
         };
         this.newPos = function () {
-            this.thrust = this.thrust + this.acceleration;
+            this.thrust = clamp(this.thrust + this.acceleration, 2, 100);
 
             this.velocityX = Math.cos(this.angle) * this.thrust;
             this.velocityY = Math.sin(this.angle) * this.thrust;
 
+            this.gravity += 0.3;
+
             this.x += this.velocityX;
-            this.y += this.velocityY;
+            this.y += this.velocityY + this.gravity;
+        };
+    }
+
+    function explosion(x, y) {
+        this.image = new Image();
+        this.image.src = '../img/explosion_sprite_sheet.png';
+        this.srcWidth = 64;
+        this.srcHeight = 64;
+        this.index = 0;
+        this.destWidth = this.srcWidth * 1.2;
+        this.destHeight = this.srcHeight * 1.2;
+
+        this.active = true;
+        this.age = 0;
+        this.width = 5;
+        this.height = 5;
+        this.x = x;
+        this.y = y;
+        this.midpoint = function () {
+            return {
+                x: this.x - this.width / 2,
+                y: this.y - this.height / 2
+            };
+        };
+        this.update = function () {
+            this.age++;
+            this.draw();
+            this.index = this.age * 2;
+            if (this.index > 25) {
+                this.active = false;
+            }
+        };
+        this.draw = function () {
+            ctx = gameArea.context;
+            ctx.fillStyle = "transparent";
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+            gameArea.context.drawImage(
+                    this.image,
+                    (this.index * this.srcWidth),
+                    0,
+                    this.srcWidth,
+                    this.srcHeight,
+                    this.x + this.destWidth / -2,
+                    this.y + this.destHeight / -2.5,
+                    this.destWidth,
+                    this.destHeight);
         };
     }
 
@@ -557,9 +610,10 @@
                 gameArea.score += 10;
                 this.target.active = false;
                 this.active = false;
-                for (var i = 0; i < 20; i++) {
+                for (var i = 0; i < 10; i++) {
                     gameArea.explodyBits.push(new explodyBit(this.x, this.y));
                 }
+                gameArea.explosions.push(new explosion(this.target.x, this.target.y));
             }
         });
     }
@@ -608,6 +662,14 @@
 
         $(gameArea.explodyBits).each(function () {
             this.newPos();
+            this.update();
+        });
+
+        gameArea.explosions = gameArea.explosions.filter(function (explosion) {
+            return explosion.active;
+        });
+
+        $(gameArea.explosions).each(function () {
             this.update();
         });
 

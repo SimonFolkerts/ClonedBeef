@@ -70,9 +70,11 @@
 
             this.canvas.addEventListener("touchmove", function (event) {
                 gameArea.getTouchPos(event);
+                cursor.active = false;
             });
             this.canvas.addEventListener("mousemove", function (event) {
                 gameArea.getMousePos(event);
+                cursor.active = true;
             });
             this.canvas.addEventListener("touchstart", function (event) {
                 event.preventDefault();
@@ -82,12 +84,14 @@
                     gameArea.start();
                 }
                 gameArea.mouseDown = true;
+                cursor.active = false;
             });
             this.canvas.addEventListener("mousedown", function () {
                 if (gameArea.terminate) {
                     gameArea.start();
                 }
                 gameArea.mouseDown = true;
+                cursor.active = true;
             });
             ['mouseup', 'touchend'].forEach(function (event) {
                 gameArea.canvas.addEventListener(event, function () {
@@ -173,7 +177,9 @@
             } else {
                 this.index = 0;
             }
-            this.draw();
+            if (this.active) {
+                this.draw();
+            }
         };
         this.draw = function () {
             gameArea.context.drawImage(
