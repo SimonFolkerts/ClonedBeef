@@ -7,7 +7,7 @@ var playerShipProperties = {
     acceleration: 35,
     maxSpeed: 130,
     
-    rotation: false,
+    rotate: false,
     angle: null,
     
     color: 'red',
@@ -27,7 +27,9 @@ var playerMissileProperties = {
     width: 33,
     height: 12,
     
-    rotation: true,
+    acceleration: 0.3,
+    
+    rotate: true,
     angle: 0,
     
     color: 'green',
@@ -41,13 +43,35 @@ var playerMissileProperties = {
     rescaleY: 0.75
 };
 
+var enemyBasicProperties = {
+    active: true,
+    age: 0,
+    width: 30,
+    height: 30,
+    
+    rotate: false,
+    angle: null,
+    
+    color: 'red',
+    image:  '../img/drone_sprite_sheet.png',
+    offsetX: 0,
+    offsetY: 0,
+    srcWidth: 120,
+    srcHeight: 120,
+    index: 0,
+    rescaleX: 0.35,
+    rescaleY: 0.35
+};
+
 var cursorProperties = {
     active: true,
     age: 0,
-    width: 55,
-    height: 28,
+    widthMouse: 10,
+    heightMouse: 10,
+    widthTouch: 40,
+    heightTouch: 40,
     
-    rotation: false,
+    rotate: false,
     angle: null,
     
     color: 'red',
@@ -61,22 +85,24 @@ var cursorProperties = {
     rescaleY: 0.2
 };
 
-var enemyBasicProperties = {
+var crosshairProperties = {
     active: true,
     age: 0,
-    width: 30,
-    height: 30,
+    width: 100,
+    height: 100,
+    minSize: 45,
     
-    rotation: false,
-    angle: null,
+    rotate: true,
+    angle: 0,
     
-    color: 'red',
-    image:  '../img/drone_sprite_sheet.png',
-    offsetX: 0,
-    offsetY: 0,
-    srcWidth: 120,
-    srcHeight: 120,
-    index: 0,
-    rescaleX: 0.35,
-    rescaleY: 0.35
+    color: '#005500',
+    image:  '',
+    offsetX: '',
+    offsetY: '',
+    srcWidth: '',
+    srcHeight: '',
+    index: '',
+    rescaleX: '',
+    rescaleY: ''
 };
+

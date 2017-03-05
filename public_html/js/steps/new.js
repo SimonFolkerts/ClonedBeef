@@ -244,8 +244,8 @@
                     0, //source y
                     this.srcWidth, //sub-image width
                     this.srcHeight, //sub-image height
-                    this.topLeftSprite().x + this.offsetX * !this.rotate, //if rotate this is 0
-                    this.topLeftSprite().y + this.offsetY * !this.rotate,
+                    (this.topLeftSprite().x + this.offsetX) * !this.rotate, //if rotate this is 0
+                    (this.topLeftSprite().y + this.offsetY) * !this.rotate,
                     this.destWidth, //destination width
                     this.destHeight); //destination height
             if (this.rotate) {
@@ -625,7 +625,7 @@
         cursor.newPos();
         cursor.drawBox();
 
-        console.log(playerShip.targetsLocked);
         collisionHandler();
+        gameArea.updateScore();
     }
 })();
