@@ -27,7 +27,7 @@ body, html {
     background-color: #FFFFFF;
 }
 
-#page-heading {
+.page-heading {
 
     color: #B68F40;
     font-size: 30px;
@@ -122,6 +122,15 @@ body, html {
     z-index: 0;
     background-color: #262626;
     padding: 50vh 0 50vh 0;
+}
+
+.final-link-container {
+    width: 80%;
+    margin: auto;
+    z-index: 0;
+    background-color: #262626;
+    padding: 50vh 0 50vh 0;
+    text-align: center;
 }
 
 .first {
@@ -374,7 +383,7 @@ body, html {
     #page-heading {
         font-size: 1em;
     }
-    
+
     .page-marker {
         font-size: 1em;
     }
