@@ -10,7 +10,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="../css/stylesheet.css" type="text/css">
         <title>Simple Javascript Game Development</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/ace/1.2.6/min/ace.js"></script>
     </head>
@@ -101,7 +101,7 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">clear: function ()</p>
                     </div>
-                    <h2 id="step-heading-4" class="step-heading">4. The Board is Set</h2>
+                    <h2 id="step-heading-4" class="step-heading">4. Summary - The Board is Set</h2>
                     <div class="step-container">
                         <div class="step__left">
                             <p>Now the fundamentals of a game environment have been established. A game area myGameArea() exists that can be drawn on and cleared
@@ -261,7 +261,7 @@ and open the template in the editor.
                     <div class="parallax">
                         <p class="background-floater">this.x = x;</p>
                     </div>
-                    <h2 id="step-heading-10" class="step-heading">10. The Pieces are Moving</h2>
+                    <h2 id="step-heading-10" class="step-heading">10. Summary - The Pieces are Moving</h2>
                     <div class="step-container">
                         <div class="step__left">
                             <p>The world is now alive. This is a game. The player avatar can be manipulated, and must do so to avoid the enemyBasics that are relentlessly spawned and will end the game if the collide with the avatar.
@@ -286,11 +286,13 @@ and open the template in the editor.
                     <h2 id="step-heading-11" class="step-heading">11. The Player Strikes Back</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Avatar can fire missiles on click to click location. Missiles accelerate towards target location 
-                                and self destruct when they reach target location.
-                                Missiles that collide with enemies before self destruction are destroyed, along with the enemy.
-                                Moving values to the inside of object classes. No need to pass stuff that won't change.
-                                Game loop reordered.
+                            <p>Now that the enemies pose an actual hazard, the player needs a means to actually fight back. Dodging the enemies could make for a game all on its own
+                                but the ability to fight back makes things more interesting. A new component playerMissile() has been added. Player missile is an object that is created on
+                                click and travels towards the click location upon which it sets itself to inactive and is removed. If it collides with an enemy it sets both itself and the enemy
+                                to inactive, removing both.<br><br>The missile object accelerates towards
+                                the target location using a block of code to determine the amount its x and y
+                                values need to be changed to step towards the target. This is further modified by 
+                                an acceleration value that changes the magnitude of each step over time.
                                 <br><br>
                             </p>
                         </div>
@@ -314,12 +316,13 @@ and open the template in the editor.
                     <h2 id="step-heading-12" class="step-heading">Step 12: Refined Mechanics</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Missiles cannot be dumbfired. Instead, when the cursor passes over an enemey whilst a mouse button is pressed down, that enemy and any others the
-                                cursor passes over will be appended to an array. Upon release of the button, the list is rapidly looped through, and a barrage of missiles is fired, 
-                                one per target. Two mouse event listeners were added that account for presses and releases of mouse buttons.
-                                Missiles will only collide and annhilate their designated target. Missiles are passed a specific target object instead of just coords
-                                Missiles will home in on their designated target (still nondirectional). Missiles will self destruct after 1.5 seconds.
-                                Frequency of enemies increases with time.                                
+                            <p>An advanced gameplay mechanic has been added. Missiles now cannot be dumbfired. Instead, when the cursor passes over an enemey whilst a mouse button 
+                                is pressed down, that enemy and any others the cursor passes over will be appended to an array and highlighted to indicate it is locked on. 
+                                Upon release of the button, the list is looped through, and a barrage of missiles is fired, one per target. Two mouse event listeners were added that account for presses and releases of mouse buttons.
+                                Missiles will only collide and mutually deactivate their designated target. The missiles target location is now the location of the target at each given moment, meaning
+                                missiles will home in on their designated target. <br><br>This means that each missile is created for a specific target which the missile travels towards and destroys, or if
+                                for some reason it does not reach its target in time it self destructs. This game mechanic adds some structure to the combat in the game, making things a bit more interesting
+                                than just random clicking to spam as many missiles as possible.
                                 <br><br>
                             </p>
                         </div>
@@ -343,10 +346,16 @@ and open the template in the editor.
                     <h2 id="step-heading-13" class="step-heading">Step 13: Icing on the Cake</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p>Missiles now emit exhaust particles that are launched relative to the missiles direction. Enemies now emit explosion particles upon death.
-                                Missiles will angle towards their target. Aim-points tweaked to aim for center, not top left.
-                                <br><br>Enemies will now travel at a randomised speed. Lock on effect is more visually interesting now. Score counter added. Reset on fail added.
-                                Visual prompts to indicate game state added.
+                            <p>Three important changes have been made here. Missiles now orient themselves to point towards the target they are tracking. This is achieved by
+                                temporarily moving the canvas to the missiles location, rotating it, drawing the missile and then reverting the canvas back to its default 
+                                position, leaving the rotated missile in place.<br><br>Missiles now emit exhaust objects which have the missile orientation passed to them.
+                                They use this information to move in the opposite direction to simulate the exhaust plume of a missile in flight. These objects become transparent over
+                                time by temporarily changing the opacity of the canvas before drawing themselves and then reverting.<br><br>Finally, a lock on effect has been added
+                                that uses a rectangular stroke to draw and animate a crosshair over locked targets. This crosshair has three stages which change to reflect whether a target is locked and 
+                                awaiting a missile fire event, or has a missile actively tracking it. The first stage is the initial lock effect, where the crosshair appears and then
+                                proceeds to shrink down. It then settles to a minimum size and rotates about the target to indicate the target is locked. Finally, the third mode triggers once a missile
+                                is actively tracking the target. The corsshair flashes red to indicate a missile is en route. This serves to make the act of targeting more visually interesting and more explicit
+                                and obvious.
                             </p>
                         </div>
                         <div class="step__right">
@@ -369,7 +378,16 @@ and open the template in the editor.
                     <h2 id="step-heading-14" class="step-heading">Step 14: Let there be Sprites</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p><br><br>
+                            <p>These arbitrary representations are not particularly interesting to look at. For the entities to be reasonably
+                                compelling representations of the subject matter they must actually resemble the objects they represent.<br><br>
+                                Functionality for the display of sprites has been added. Each entity that is to have a sprite now has a sprite sheet 
+                                and the information used to handle the sprite sheet as part of its properties. The drawImage() function is 
+                                critical, as it allows a specific portion of an image to be drawn at a specific place. By using logic to determine the
+                                position of an individual sprite on a sheet, the index value can determine which frame is drawn. By modifying index, the
+                                frame can be modified.<br><br>The missile exhaust is still a canvas rect, but has no been upgraded to use a radial gradient to look more
+                                smoky. A cursor sprite has also been added that expands on click and returns when click is released.
+                                This should serve to clarify the click and drag targeting mechanic a bit better. Finally, a background image that is tiled
+                                has been set to scroll a set distance before returning to the beginning in such a was so as to appear seamless.
                             </p>
                         </div>
                         <div class="step__right">
@@ -392,7 +410,17 @@ and open the template in the editor.
                     <h2 id="step-heading-15" class="step-heading">Step 15: Push Me, and then just Touch Me</h2>
                     <div class="step-container">
                         <div class="step__left">
-                            <p><br><br>
+                            <p>As this game is intended to be able to run on mobile devices as well as on desktops, touch functionality is required.
+                                Much as the user clicks and drags over enemies to target them and move the ship, the user should be able to touch and drag
+                                to do the same. In order to achieve this the mouse functionality must be complemented with touch functionality.<br><br>
+                                Event listeners for the tap, touchstart, touchend and touchmove events have been added in order to replicate this functionality.
+                                As a part of upgrading the user input code, the logic has been made more modular and uses a more robust method of finding the
+                                cursor position. Instead of simply using the mouse offset, the getBoundingClientRect() method is used to determine the cursors
+                                left and top values in relation to the top left of the canvas bounding rectangle. This ensures the code is independent of any
+                                positioning quirks the canvas may be subject to.<br><br>Finally, a workaround that prevents the browser pausing on a tap event to 
+                                see if the tap will be a doubletap has been implemented. By including &lt;meta name=&quot;viewport&quot; content=&quot;width=device
+                                -width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot;&gt; the browser will not pause and wait but instead will immediately 
+                                execute a touch event on tap.
                             </p>
                         </div>
                         <div class="step__right">
@@ -402,9 +430,26 @@ and open the template in the editor.
                         </div>
                     </div>
                 </section>
-                <section class="final-link-container">
+                <section id="section-16" class="section-container">
+                    <h2 id="step-heading-16" class="step-heading">Refined and Ready</h2>
                     <div class="step-container">
-                        <a class="page-heading" href="feature.html">The Finished Product</a>
+                        <div class="step__left" style='width: 80%;'>
+                            <p>Having now reached what could be called the foundation for a complete game, it is time to review the code.
+                                This final step is the result of refactoring the entire code with the intention of organising and cleaning it up.
+                                The final version currently includes these new features:<br><br>
+                                The entire code has been refactored to use object inheritance to make it more modular and less redundant. All game objects now have a prototypical
+                                'component' object that gives them the basic traits of a game element, which can then be extended with entity specific functionality.<br><br>
+                                The code is now clearly commented and self documenting. It is very clearly organised and designed with further expansion in mind. Whilst the work up until
+                                now has been a progressive, organic process, this version of the code has been written retroactively, and in doing so minimises clutter and redundancy.<br><br>
+                                A basic resource manager has been added that handles the loading of assets and displays a loading screen. Previously the game would start as soon
+                                as it was clicked on and only then would begin loading in assets, leading to a period where certain entities are invisible. The resource manager
+                                ensures all assets are loaded before launching the game.<br><br>The exhaust sprites have been replaced with a stroke to improve performance until a more efficient
+                                solution is found.<br><br>
+
+                            </p>
+                            <a class="page-heading" href="feature.html">Click Here To See The 'Finished' Product</a>
+                            <div id="editor-16" class="editor editor-final"></div>
+                        </div>
                     </div>
                 </section>
             </div>

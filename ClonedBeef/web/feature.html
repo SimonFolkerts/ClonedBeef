@@ -11,13 +11,19 @@
     </head>
     <body>
         <header id="header">
-            <h1 id="page-heading">Simple Javascript Game Development</h1>
+            <a href="index.html"><</a>
+            <h1 id="page-heading">HTML5 / Javascript Game Demo</h1>
         </header>
         <div id="content-container">
-            <canvas id="canvas-step-16" class="game-area"></canvas>
-            
-            <script src='../js/steps/configuration.js'></script>
-            <script src='../js/steps/new.js'></script>
+            <div class='gamewrapper'>
+                <div id="modal" class="modal">
+                    <img class="playbutton" src="../img/playbutton.png" alt="play game">
+                </div>
+                <canvas id="canvas" class="game-area"></canvas>
+
+                <script src='../js/steps/configuration.js'></script>
+                <script src='../js/steps/canvas-game.js'></script>
+            </div>
         </div>
     </body>
 </html>
